@@ -1,2 +1,2 @@
-run_first:
+first:
 	python src/first.py
