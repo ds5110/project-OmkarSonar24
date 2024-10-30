@@ -11,7 +11,7 @@ Akash Dhande, Omkar Sonar(Team Lead), Rama Krishna Chavali, Jermine German
     - I am interested in understanding both where stroke survivors receive care (e.g, inpatient rehabilitation, skilled nursing facilities) and what care is received (how often do stroke survivors see certain physician specialists like neurologists, physical medicine and rehabilitation doctors, cardiologists) and rehabilitation providers (physical therapists, occupational therapists, and speech-language pathologists).
 
 ## Solutions and EDA performed have been noted as follows - 
-1 [EDA Document](eda.md)
+1. [EDA Document](eda.md)
 
 ### Reproducibility - 
 Note: Since the OHDSI Pharmetrics+ dataset is not accessible from any local machine, it enforces the use of a Amazon Workspace instance, where in you can use `make` commands as mentioned below to save and show the plots mentioned in the above eda document. Further instructions to generate the figures individually have been provided in the EDA document itself.
