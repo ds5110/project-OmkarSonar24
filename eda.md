@@ -5,7 +5,7 @@ Following are the figures we have plotted as a form of inital level EDA, of the 
 <center>
 
 ```sql
-    SELECT c.concept_name as stroke_type, COUNT (*) as count 
+SELECT c.concept_name as stroke_type, COUNT (*) as count 
 FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
 JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
 WHERE c.concept_name LIKE '%stroke%' 
