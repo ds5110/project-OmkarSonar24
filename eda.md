@@ -3,6 +3,7 @@
 Following are the figures we have plotted as a form of inital level EDA, of the OHDSI Pharmetrics+ Dataset, in context of stroke patients.
 
 <center>
+
 ```sql
     SELECT c.concept_name as stroke_type, COUNT (*) as count 
 FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
@@ -13,21 +14,37 @@ AND c.concept_name NOT LIKE '%heat stroke%'
 AND c.concept_name NOT LIKE '%heatstroke%' 
 AND c.concept_name NOT LIKE '%sun stroke%' 
 GROUP BY c.concept_name 
-ORDER BY count DESC;"
+ORDER BY count DESC;
 ```
 <figure>
 <figcaption>Figure 1 <figcaption>
 <img src="figs/fig1.jpg" width=650>
 </figure>
 
-<figure>
-<img src="figs/fig2.jpg" width=650>
-<figcaption>Figure 2 <figcaption>
-</figure>
+```sql
+SELECT c.concept_name as stroke_type, COUNT (*) as count 
+FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
+JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
+WHERE c.concept_id IN (372924,375557,376713,443454,441874,439847,432923) 
+GROUP BY c.concept_name 
+ORDER BY count DESC;
+```
 
 <figure>
-<img src="figs/fig3.jpg" width=650>
+<figcaption>Figure 2 <figcaption>
+<img src="figs/fig2.jpg" width=650>
+</figure>
+
+
+```sql
+SELECT vo.person_id, vo.visit_occurrence_id, c.concept_id, c.concept_name 
+FROM work_dhande_ak210.visit_detail vo 
+JOIN omop_cdm_53_pmtx_202203.concept c on vo.visit_detail_concept_id =c.concept_id order by vo.visit_occurrence_id ;
+```
+
+<figure>
 <figcaption>Figure 3 <figcaption>
+<img src="figs/fig3.jpg" width=650>
 </figure>
 </center>
 
