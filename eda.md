@@ -3,9 +3,21 @@
 Following are the figures we have plotted as a form of inital level EDA, of the OHDSI Pharmetrics+ Dataset, in context of stroke patients.
 
 <center>
+```sql
+    SELECT c.concept_name as stroke_type, COUNT (*) as count 
+FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
+JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
+WHERE c.concept_name LIKE '%stroke%' 
+AND c.domain_id = 'Condition' 
+AND c.concept_name NOT LIKE '%heat stroke%' 
+AND c.concept_name NOT LIKE '%heatstroke%' 
+AND c.concept_name NOT LIKE '%sun stroke%' 
+GROUP BY c.concept_name 
+ORDER BY count DESC;"
+```
 <figure>
-<img src="figs/fig1.jpg" width=650>
 <figcaption>Figure 1 <figcaption>
+<img src="figs/fig1.jpg" width=650>
 </figure>
 
 <figure>
