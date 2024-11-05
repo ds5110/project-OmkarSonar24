@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to the database
-connection = sqlite3.connect('mydb.db')
+connection = sqlite3.connect('DB/mydb.db')
 cursor = connection.cursor()
 
 # SQL command to create the 'visit_detail' table
