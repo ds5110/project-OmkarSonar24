@@ -1,28 +1,40 @@
 import pandas as pd
 import os
-import redshift_connector
+import sqlite3  
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-conn = redshift_connector.connect(
-    host='ohdsi-lab-redshift-cluster-prod.clsyktjhufn7.us-east-1.redshift.amazonaws.com',
-    database='ohdsi_lab',
-    user=os.environ['redshift_user'],
-    password=os.environ['redshift_pass']
- )
+# Connect to the local SQLite database 
+conn = sqlite3.connect('DB/mydb.db')  
 cursor = conn.cursor()
 
-#print(cursor)
+# SQL query to fetch data from the local database
+query = """
+SELECT vo.person_id, vo.visit_occurrence_id, c.concept_id, c.concept_name
+FROM visit_detail vo
+JOIN concept c ON vo.visit_detail_concept_id = c.concept_id
+ORDER BY vo.visit_occurrence_id;
+"""
 
-query = "select vo.person_id, vo.visit_occurrence_id, c.concept_id, c.concept_name from work_dhande_ak210.visit_detail vo join omop_cdm_53_pmtx_202203.concept c on vo.visit_detail_concept_id =c.concept_id order by vo.visit_occurrence_id ;"
-cursor.execute(query)
-df = cursor.fetch_dataframe()
+# Execute the query and fetch data into a pandas DataFrame
+df = pd.read_sql(query, conn)
 
-sns.histplot(data=df, x='concept_name')
-plt.xticks(rotation=90);
+# Set up the seaborn style for plotting
+sns.set(style="whitegrid")
+
+# Plotting a histogram for the distribution of 'concept_name'
+plt.figure(figsize=(12, 6))
+sns.histplot(data=df, x='concept_name', kde=False, bins=20)
+plt.xticks(rotation=90)
 plt.xlabel("Types of Patient Visits")
 plt.title("Patients Visit Types Distribution")
+
+# Save the plot as a JPG file
 plt.savefig("patients_visit_type_distribution.jpg", bbox_inches='tight')
 
+# Show the plot
+plt.show()
+
+# Close the cursor and connection
 cursor.close()
 conn.close()
