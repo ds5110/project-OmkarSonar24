@@ -22,9 +22,11 @@ Our current objective after discussing with Rob, is to compare the treatment pat
 Additionally we look forward to draw some conclusions on the basis of the above analysis and explore further in a more targeted manner.
 
 ## Risks and Limitations
-### 1. Data Limitation: The primary risk is the lack of detailed outcome data, such as mortality rates or improvements in mobility and cognition. This limits our ability to draw definitive conclusions about the effectiveness of treatment pathways on long-term outcomes.
+### 1. Data Limitation: 
+The primary risk is the lack of detailed outcome data, such as mortality rates or improvements in mobility and cognition. This limits our ability to draw definitive conclusions about the effectiveness of treatment pathways on long-term outcomes.
 
-### 2. Generalizability: The findings may be limited in scope due to the data being based on claims data, which may not fully capture the clinical nuances of patient care.
+### 2. Generalizability: 
+The findings may be limited in scope due to the data being based on claims data, which may not fully capture the clinical nuances of patient care.
 
 
 ## Conclusion
