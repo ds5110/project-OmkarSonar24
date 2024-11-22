@@ -56,3 +56,11 @@
         * We will analyze how the duration of different treatments correlates with the types of care received and patient characteristics. This will help identify how long patients typically stay within certain treatment pathways and whether certain durations correlate with more effective outcomes.
     * Diagnostic Procedures:
         * A detailed examination of the diagnostic procedures undertaken at various stages of care to understand whether specific diagnostics correlate with treatment effectiveness. This will help us evaluate the care quality provided at different stages of treatment, even without long-term outcome data.
+
+
+## Roles and responsibilities
+
+* Ramakrishna Chavali : Worked on Concept , procedure and visit_detail table to find insights/patterns on stroke.
+* Akash Dhande : Worked on treatment pathways by joining various tables to find key insights on the treatments.
+* Omkar Sonar : Worked on procedure and visit table to find insights on the procedures taken by people who have the strokes that are listed. 
+* Jermaine : Created dummy database and populated it with data to ensure reproducibility of the pipeline.
