@@ -6,14 +6,23 @@ After several discussions with Rob Cavanaugh (stakeholder) and a closer look at 
 
 ## Changes from Original Story
 
-### Data Limitations
-The available claims data does not provide sufficient detail on patient outcomes such as mortality rates or stroke recurrence, which were initially our key areas of interest. Therefore, we cannot conclusively investigate these factors.
+### 1. Data Limitations
+The available claims data does not provide sufficient detail on patient outcomes such as mortality rates or stroke recurrence, which were initially our key areas of interest. Therefore, we cannot conclusively investigate these factors.<br>
+A - Initial approach was to evaluate and compare the effectiveness of indivual treatment pathways by measuring metrics such as mortality rates, stroke recurrence and quality of life at the end of a treatment pathway. However due to the non-standard nature of the data, there exist a lot of irregularities which make it very difficult to calculate these metrics.
 
-### Short Timeline
-Given the class timeline, which is shorter than a typical capstone project, a more focused approach is necessary.
+### 2. Tight Timelines
+Given the class timeline, which is shorter than a typical capstone project, a more focused approach is necessary.<br>
+A - We try to fit in our project within the DS5110 class timelines and hence it leaves us with very limited time to spend on exploration of data and forces us to decide our objective with agility. Adding to this, the large number of inter-related tables and the time required to query them poses a challenge.
 
-### Refined Focus
-The project will now focus on treatment pathways and their effectiveness, specifically in terms of treatment duration and diagnostic procedures, rather than attempting to model the full progression of care transitions.
+### 3. Refined Focus
+The project will now focus on treatment pathways and their effectiveness, specifically in terms of treatment duration and diagnostic procedures, rather than attempting to model the full progression of care transitions.<br>
+A - Our current objective after discussing with the stakeholder is to compare the treatment pathways taken by patients who have had different types of strokes categorised into Ischemic Stroke, Haemmoragic Stroke and Cryptogenic Stroke. The analysis will/may include comparisons on the basis of -
+- Treatement location
+- Treatment providers visited
+- Types of treatment(only the ones relevant to stroke)
+- Duration of treatments
+
+Additionally we look forward to draw some conclusions on the basis of the above analysis and explore further in a more targetted manner.
 
 ## Approach
 
