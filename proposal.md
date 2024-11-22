@@ -7,7 +7,7 @@ After several discussions with Rob Cavanaugh (stakeholder) and a closer look at 
 ## Changes from Original Story
 
 ### 1. Data Limitations
-Initial approach was to evaluate and compare the effectiveness of indivual treatment pathways by measuring metrics such as mortality rates, stroke recurrence and quality of life at the end of a treatment pathway. However due to the non-standard nature of the data, there exist a lot of irregularities which make it very difficult to calculate these metrics.
+Initial approach was to evaluate and compare the effectiveness of individual treatment pathways by measuring metrics such as mortality rates, stroke recurrence and quality of life at the end of a treatment pathway. However due to the non-standard nature of the data, there exist a lot of irregularities which make it very difficult to calculate these metrics.
 
 ### 2. Tight Timelines
 Given the limited class timeline, which is shorter than a typical capstone project, it leaves us with limited time to spend on data exploration and hence forces us to decide our objective with agility requiring a more focused approach. Also, the number of large inter-related tables and the time required to query them poses a challenge. <br>
