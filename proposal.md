@@ -7,22 +7,19 @@ After several discussions with Rob Cavanaugh (stakeholder) and a closer look at 
 ## Changes from Original Story
 
 ### 1. Data Limitations
-The available claims data does not provide sufficient detail on patient outcomes such as mortality rates or stroke recurrence, which were initially our key areas of interest. Therefore, we cannot conclusively investigate these factors.<br>
-A - Initial approach was to evaluate and compare the effectiveness of indivual treatment pathways by measuring metrics such as mortality rates, stroke recurrence and quality of life at the end of a treatment pathway. However due to the non-standard nature of the data, there exist a lot of irregularities which make it very difficult to calculate these metrics.
+Initial approach was to evaluate and compare the effectiveness of indivual treatment pathways by measuring metrics such as mortality rates, stroke recurrence and quality of life at the end of a treatment pathway. However due to the non-standard nature of the data, there exist a lot of irregularities which make it very difficult to calculate these metrics.
 
 ### 2. Tight Timelines
-Given the class timeline, which is shorter than a typical capstone project, a more focused approach is necessary.<br>
-A - We try to fit in our project within the DS5110 class timelines and hence it leaves us with very limited time to spend on exploration of data and forces us to decide our objective with agility. Adding to this, the large number of inter-related tables and the time required to query them poses a challenge.
+Given the limited class timeline, which is shorter than a typical capstone project, it leaves us with limited time to spend on data exploration and hence forces us to decide our objective with agility requiring a more focused approach. Also, the number of large inter-related tables and the time required to query them poses a challenge. <br>
 
 ### 3. Refined Focus
-The project will now focus on treatment pathways and their effectiveness, specifically in terms of treatment duration and diagnostic procedures, rather than attempting to model the full progression of care transitions.<br>
-A - Our current objective after discussing with the stakeholder is to compare the treatment pathways taken by patients who have had different types of strokes categorised into Ischemic Stroke, Haemmoragic Stroke and Cryptogenic Stroke. The analysis will/may include comparisons on the basis of -
-- Treatement location
+Our current objective after discussing with Rob, is to compare the treatment pathways taken by patients who have had different types of strokes categorised into Ischemic Stroke, Haemorrhagic Stroke and Cryptogenic Stroke. The analysis will/may include comparisons on the basis of -
+- Treatment location
 - Treatment providers visited
 - Types of treatment(only the ones relevant to stroke)
 - Duration of treatments
 
-Additionally we look forward to draw some conclusions on the basis of the above analysis and explore further in a more targetted manner.
+Additionally we look forward to draw some conclusions on the basis of the above analysis and explore further in a more targeted manner.
 
 ## Approach
 
@@ -37,9 +34,6 @@ To adapt to the data limitations and the project's shorter timeline, we have rev
 
 3. **Diagnostic and Treatment Focus**:  
    The focus will shift towards evaluating the types of diagnostic tests and treatments patients undergo at various stages of care. This will allow us to examine the quality and consistency of care at different stages, even without detailed outcome data.
-
-### Approach Overview
-We will perform a data-driven analysis using machine learning techniques to cluster stroke survivors based on the treatment pathways they follow. The analysis will include:
 
 - **Treatment Duration**:  
    We will analyze how the duration of different treatments correlates with the types of care received and patient characteristics. This will help identify how long patients typically stay within certain treatment pathways and whether certain durations correlate with more effective outcomes.
