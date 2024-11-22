@@ -21,26 +21,18 @@ Our current objective after discussing with Rob, is to compare the treatment pat
 
 Additionally we look forward to draw some conclusions on the basis of the above analysis and explore further in a more targeted manner.
 
-## Approach
-
-### Objectives
-To adapt to the data limitations and the project's shorter timeline, we have revised the objectives as follows:
-
-1. **Compare Treatment Pathway Effectiveness**:  
-   We will examine how different treatment pathways correlate with treatment duration and specific diagnostic procedures. The goal is to identify whether certain pathways are more effective in terms of patient care, based on available metrics.
-
-2. **Treatment Pathway Comparison Across Stroke Types**:  
-   Focusing on procedures undergone by patients, we will explore how treatment pathways differ for various types of strokes (ischemic, hemorrhagic, cryptogenic). This could provide insights into how patients with different stroke types are treated across various levels of care.
-
-3. **Diagnostic and Treatment Focus**:  
-   The focus will shift towards evaluating the types of diagnostic tests and treatments patients undergo at various stages of care. This will allow us to examine the quality and consistency of care at different stages, even without detailed outcome data.
-
 - **Treatment Duration**:  
-   We will analyze how the duration of different treatments correlates with the types of care received and patient characteristics. This will help identify how long patients typically stay within certain treatment pathways and whether certain durations correlate with more effective outcomes.
+   We would also look to analyze how the duration of different treatments correlates with the types of care received and patient characteristics. This will help identify how long patients typically stay within certain treatment pathways and whether certain durations correlate with more effective outcomes.
 
 - **Diagnostic Procedures**:  
-   A detailed examination of the diagnostic procedures undertaken at various stages of care to understand whether specific diagnostics correlate with treatment effectiveness. This will help us evaluate the care quality provided at different stages of treatment, even without long-term outcome data.
+   A detailed examination of the diagnostic procedures undertaken at various stages of care to understand whether specific diagnostics correlate with treatment effectiveness. This will help us evaluate the care quality provided at different stages of treatment.
+
+## Risks and Limitations
+Data Limitation: The primary risk is the lack of detailed outcome data, such as mortality rates or improvements in mobility and cognition. This limits our ability to draw definitive conclusions about the effectiveness of treatment pathways on long-term outcomes.
+
+Generalizability: The findings may be limited in scope due to the data being based on claims data, which may not fully capture the clinical nuances of patient care.
+
 
 ## Conclusion
 
-In conclusion, our revised approach offers a feasible and data-driven solution to understanding stroke survivor care pathways. By shifting the focus from broad care transitions to specific treatment pathways, we can provide valuable insights into how these pathways relate to key metrics like treatment duration and diagnostic procedures. This refined focus will allow us to contribute actionable insights for improving care protocols and optimizing stroke rehabilitation, despite the data limitations.
+With our revised approach which offers a data-driven solution to understanding stroke survivor care pathways, we plan to learn the healthcare domain and analyse various apsects within this. By shifting the focus from broad care transitions to specific treatment pathways, we can provide valuable insights into how these pathways relate to key metrics like treatment duration and diagnostic procedures. This refined focus will allow us to contribute actionable insights for improving care protocols and optimizing stroke rehabilitation. This is our first time analysing such a huge medical dataset and we plan to take advantage of this oppurtunity to apply our data exploratory concepts which we learned in the class.
