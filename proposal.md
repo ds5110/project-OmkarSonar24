@@ -21,12 +21,6 @@ Our current objective after discussing with Rob, is to compare the treatment pat
 
 Additionally we look forward to draw some conclusions on the basis of the above analysis and explore further in a more targeted manner.
 
-- **Treatment Duration**:  
-   We would also look to analyze how the duration of different treatments correlates with the types of care received and patient characteristics. This will help identify how long patients typically stay within certain treatment pathways and whether certain durations correlate with more effective outcomes.
-
-- **Diagnostic Procedures**:  
-   A detailed examination of the diagnostic procedures undertaken at various stages of care to understand whether specific diagnostics correlate with treatment effectiveness. This will help us evaluate the care quality provided at different stages of treatment.
-
 ## Risks and Limitations
 Data Limitation: The primary risk is the lack of detailed outcome data, such as mortality rates or improvements in mobility and cognition. This limits our ability to draw definitive conclusions about the effectiveness of treatment pathways on long-term outcomes.
 
