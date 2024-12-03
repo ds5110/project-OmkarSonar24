@@ -54,9 +54,7 @@ Below are the steps by which we were able to do it.
 
 * Unzip it and use the required csv files by replacing them with the ones we saw before.
 
-* Use the below video to understand this step :
-
-<video src="DB/DB_setup_video/DB_setup.mp4" controls width="1000"></video>
+* Use this video to understand this step : [DB Setup Video](DB/DB_setup_video/DB_setup.mp4)
 
 
 * Note : The data that you will get from athena will be huge , so if everything is not necessary , trim it down based on your requirement.
