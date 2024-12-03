@@ -28,6 +28,8 @@ Below are the steps by which we were able to do it.
 
 <img src= "DB\DB_related_images\db_creation_step_5.png">
 
+* Use this video to understand this step : [DB Setup Video](DB/DB_setup_video/DB_setup_1.mp4)
+
 * We can use these tables we just created to test our codes. 
 
 * Aditionally , if we use tables such as "concept_ancestor" for instance , since it doesn't havve data in it , it will be a proble. To solve such issue follow the below steps.
