@@ -260,6 +260,8 @@ ORDER BY iosc.person_id, iosc.condition_start_date, vo.visit_start_date ;
 """
 QUERY_FETCH_ISCHEMIC_ONLY_VISITS = "SELECT * FROM schema_name.ischemic_only_visits2;"
 QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = "SELECT * FROM schema_name.haemorrhagic_only_visits2;"
+QEURY_FETCH_ISCHEMIC_ONLY_EDA = "SELECT * FROM schema_name.ischemic_only_stroke_cohort;"
+QEURY_FETCH_HAEMORRHAGIC_ONLY_EDA="SELECT * FROM schema_name.haemorrhagic_only_stroke_cohort;"
 
 # QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = """SELECT 
 # person_id, 
