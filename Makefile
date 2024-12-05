@@ -6,3 +6,6 @@ fig2:
 
 fig3:
 	python src/third.py
+
+EDA:
+	python src/EDA.py
