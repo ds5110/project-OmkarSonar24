@@ -1,6 +1,6 @@
 # DB Setup
 
-To ensure reproducibility , we creted an SQLite Local Database.
+For testing purposes , we creted an SQLite Local Database.
 
 Below are the steps by which we were able to do it.
 
