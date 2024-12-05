@@ -240,7 +240,7 @@ INNER JOIN omop_cdm_53_pmtx_202203.visit_occurrence vo ON hosc.person_id = vo.pe
 INNER JOIN omop_cdm_53_pmtx_202203.concept c ON hosc.condition_concept_id  = c.concept_id
 INNER JOIN omop_cdm_53_pmtx_202203.concept c2 ON vo.visit_concept_id = c2.concept_id
 INNER JOIN omop_cdm_53_pmtx_202203.concept c3 ON vo.discharge_to_concept_id = c3.concept_id 
-WHERE vo.visit_start_date >= hosc.condition_start_date 
+WHERE vo.visit_start_date >= hosc.condition_start_date AND vo.visit_start_date <= hosc.condition_start_date + INTERVAL '180 days'
 ORDER BY hosc.person_id, hosc.condition_start_date, vo.visit_start_date ;
 """
 
@@ -255,23 +255,13 @@ INNER JOIN omop_cdm_53_pmtx_202203.visit_occurrence vo ON iosc.person_id = vo.pe
 INNER JOIN omop_cdm_53_pmtx_202203.concept c ON iosc.condition_concept_id  = c.concept_id
 INNER JOIN omop_cdm_53_pmtx_202203.concept c2 ON vo.visit_concept_id = c2.concept_id
 INNER JOIN omop_cdm_53_pmtx_202203.concept c3 ON vo.discharge_to_concept_id = c3.concept_id 
-WHERE vo.visit_start_date >= iosc.condition_start_date 
+WHERE vo.visit_start_date >= iosc.condition_start_date AND vo.visit_start_date <= iosc.condition_start_date + INTERVAL '180 days'
 ORDER BY iosc.person_id, iosc.condition_start_date, vo.visit_start_date ;
 """
-QUERY_FETCH_ISCHEMIC_ONLY_VISITS = "SELECT * FROM schema_name.ischemic_only_visits2;"
-QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = "SELECT * FROM schema_name.haemorrhagic_only_visits2;"
+QUERY_FETCH_ISCHEMIC_ONLY_VISITS = "SELECT * FROM schema_name.ischemic_only_visits;"
+QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = "SELECT * FROM schema_name.haemorrhagic_only_visits;"
 QEURY_FETCH_ISCHEMIC_ONLY_EDA = "SELECT * FROM schema_name.ischemic_only_stroke_cohort;"
 QEURY_FETCH_HAEMORRHAGIC_ONLY_EDA="SELECT * FROM schema_name.haemorrhagic_only_stroke_cohort;"
-
-# QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = """SELECT 
-# person_id, 
-# visit_start_date, visit_end_date, visit_concept_id, visit_concept_name, 
-# discharge_to_concept_id, discharge_to_concept_name  FROM schema_name.haemorrhagic_only_visits hov;"""
-
-# QUERY_FETCH_ISCHEMIC_ONLY_VISITS = """SELECT 
-# person_id, 
-# visit_start_date, visit_end_date, visit_concept_id, visit_concept_name, 
-# discharge_to_concept_id, discharge_to_concept_name  FROM schema_name.ischemic_only_visits iov;"""
 
 
 CREATE_TABLE_QUERY_MAP = {
