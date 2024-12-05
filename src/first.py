@@ -1,41 +1,47 @@
 import pandas as pd
-import os
-import sqlite3  
+import sqlite3
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+from reuse import render_plot, plot_selection_terminal
 
-# Connect to local SQLite database 
-conn = sqlite3.connect('DB/mydb.db')  
+# Database connection and data retrieval
+conn = sqlite3.connect('DB/mydb.db')
 cursor = conn.cursor()
 
-# Sample query to fetch data from the local database 
-query = """
-SELECT c.concept_name as stroke_type, COUNT(*) as count 
-FROM condition_occurrence AS co 
-JOIN concept AS c ON co.condition_concept_id = c.concept_id 
-WHERE c.concept_name LIKE '%stroke%' 
-  AND c.domain_id = 'Condition' 
-  AND c.concept_name NOT LIKE '%heat stroke%' 
-  AND c.concept_name NOT LIKE '%heatstroke%' 
-  AND c.concept_name NOT LIKE '%sun stroke%' 
-GROUP BY c.concept_name 
-ORDER BY count DESC;
+query1 = """
+SELECT * from final_stroke_cohort;
 """
 
-# Fetch the data into a pandas DataFrame
-df = pd.read_sql(query, conn)
+df1 = pd.read_sql(query1, conn)
 
-# Set the seaborn style for plotting
-sns.set(style="whitegrid")
+data = pd.DataFrame(df1, columns=["condition_occurrence_id", "person_id", "condition_concept_id", "condition_start_date", 
+                                  "condition_end_date", "age", "gender_concept_id", "condition_descendant_concept_id", 
+                                  "observation_start_date", "observation_end_date", "observation_period_id", "stroke_type", "gender"])
 
-# Plotting a bar chart
-plt.figure(figsize=(12, 6))
-sns.barplot(data=df, x='stroke_type', y='count', palette='Blues_d')
-plt.xticks(rotation=45, ha='right')
-plt.title("Counts of Different Types of Strokes")
-plt.xlabel("Stroke Type")
-plt.ylabel("Count")
-plt.show()
+data['age'] = pd.to_numeric(data['age'], errors='coerce')
+data = data.dropna(subset=['age', 'stroke_type'])
 
-# Close the connection to the database
+if len(data[data['stroke_type'] == 'ischemic']) == 0 or len(data[data['stroke_type'] == 'hemorrhagic']) == 0:
+    print("One of the stroke types is missing in the dataset")
+
+# Plotting
+plt.figure(figsize=(10, 6))
+sns.kdeplot(data=data, x='age', hue='stroke_type', fill=True)
+plt.title('Age Distribution by Stroke Type')
+plt.xlabel('Age')
+plt.ylabel('Density')
+os.makedirs('figs/TEST_DB', exist_ok=True)
+os.makedirs('figs/OHDSI', exist_ok=True)
+plt.savefig('figs/TEST_DB/first.png', dpi=300, bbox_inches='tight')
+
 conn.close()
+
+# Dictionary for plot paths
+plot_paths = {
+    "test_db": "figs/TEST_DB/first.png", 
+    "ohdsi": "figs/OHDSI/first.png"
+}
+
+# Run terminal-based selection
+plot_selection_terminal(plot_paths)

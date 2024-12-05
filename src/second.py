@@ -1,43 +1,51 @@
 import pandas as pd
-import os
-import sqlite3  
+import sqlite3
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+from reuse import render_plot, plot_selection_terminal
 
-# Connect to the local SQLite database 
-conn = sqlite3.connect('DB/mydb.db')  
+# Database connection and data retrieval
+conn = sqlite3.connect('DB/mydb.db')
 cursor = conn.cursor()
 
-# Sample query to fetch data from the local database 
-query4 = """
-SELECT c.concept_name as stroke_type, COUNT(*) as count 
-FROM condition_occurrence AS co 
-JOIN concept AS c ON co.condition_concept_id = c.concept_id 
-WHERE c.concept_id IN (372924, 375557, 376713, 443454, 441874, 439847, 432923) 
-GROUP BY c.concept_name 
-ORDER BY count DESC;
+query1 = """
+SELECT * from final_stroke_cohort;
 """
 
-# Fetch the data into a pandas DataFrame
-df4 = pd.read_sql(query4, conn)
+df1 = pd.read_sql(query1, conn)
 
-# Set the seaborn style for plotting
-sns.set(style="whitegrid")
+data = pd.DataFrame(df1, columns=["condition_occurrence_id", "person_id", "condition_concept_id", "condition_start_date", 
+                                  "condition_end_date", "age", "gender_concept_id", "condition_descendant_concept_id", 
+                                  "observation_start_date", "observation_end_date", "observation_period_id", "stroke_type", "gender"])
 
-# Plotting a bar chart
+data['age'] = pd.to_numeric(data['age'], errors='coerce')
+data = data.dropna(subset=['age', 'stroke_type'])
+
+
+if len(data[data['stroke_type'] == 'ischemic']) == 0 or len(data[data['stroke_type'] == 'hemorrhagic']) == 0:
+    print("One of the stroke types is missing in the dataset")
+
+# Plotting gender distribution by stroke type
 plt.figure(figsize=(12, 6))
-sns.barplot(data=df4, x='stroke_type', y='count', palette='Blues_d')
-plt.xticks(rotation=45, ha='right')
-plt.title("Counts of Different Types of Strokes")
-plt.xlabel("Stroke Type")
-plt.ylabel("Count")
+sns.countplot(data=data, x='gender', hue='stroke_type')
+plt.title('Gender Distribution by Stroke Type')
+plt.xlabel('Gender')
+plt.ylabel('Count')
+plt.grid(axis='y', linestyle='--', alpha=0.7)  # Gridlines for readability
+plt.legend(title='Stroke Type', loc='upper right', fontsize=10, title_fontsize=11)
 
-# Save the plot as a PNG file
-plt.savefig("second.png", bbox_inches='tight')
+# Save plot
+os.makedirs('figs/TEST_DB', exist_ok=True)
+plt.savefig('figs/TEST_DB/second.png', dpi=300, bbox_inches='tight')
 
-# Show the plot
-plt.show()
-
-# Close the cursor and connection
-cursor.close()
 conn.close()
+
+# Dictionary for plot paths
+plot_paths = {
+    "test_db": "figs/TEST_DB/second.png",
+    "ohdsi": "figs/OHDSI/second.png"
+}
+
+# Run terminal-based selection
+plot_selection_terminal(plot_paths)
