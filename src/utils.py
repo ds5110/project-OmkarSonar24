@@ -15,6 +15,7 @@ schema = config.get('redshift', 'schema')  # Read schema from config
 # Identify consecutive sequences that match the target set
 def find_consecutive_target_sequences(group):
     # Keep track of sequences that match the target set
+    target_set = {8782, 8717, 8920, 8870, 9201, 8971, 8546}
     group['is_target'] = group['visit_concept_id'].isin(target_set)
     group['seq_id'] = (group['is_target'] != group['is_target'].shift()).cumsum()
     # display(group[group['is_target']].groupby('seq_id').apply(lambda x: x))

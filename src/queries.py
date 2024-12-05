@@ -258,8 +258,19 @@ INNER JOIN omop_cdm_53_pmtx_202203.concept c3 ON vo.discharge_to_concept_id = c3
 WHERE vo.visit_start_date >= iosc.condition_start_date 
 ORDER BY iosc.person_id, iosc.condition_start_date, vo.visit_start_date ;
 """
-QUERY_FETCH_ISCHEMIC_ONLY_VISITS = "SELECT * FROM ischemic_only_visits;"
-QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = "SELECT * FROM haemorrhagic_only_visits;"
+QUERY_FETCH_ISCHEMIC_ONLY_VISITS = "SELECT * FROM schema_name.ischemic_only_visits2;"
+QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = "SELECT * FROM schema_name.haemorrhagic_only_visits2;"
+
+# QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = """SELECT 
+# person_id, 
+# visit_start_date, visit_end_date, visit_concept_id, visit_concept_name, 
+# discharge_to_concept_id, discharge_to_concept_name  FROM schema_name.haemorrhagic_only_visits hov;"""
+
+# QUERY_FETCH_ISCHEMIC_ONLY_VISITS = """SELECT 
+# person_id, 
+# visit_start_date, visit_end_date, visit_concept_id, visit_concept_name, 
+# discharge_to_concept_id, discharge_to_concept_name  FROM schema_name.ischemic_only_visits iov;"""
+
 
 CREATE_TABLE_QUERY_MAP = {
     "inpatient_stroke_haemorrhagic": QUERY_CREATE_INPATIENT_HAEMORRHAGIC_COHORT,
