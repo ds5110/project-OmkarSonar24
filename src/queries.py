@@ -374,7 +374,7 @@ ORDER BY ibp.procedure_count DESC;
 """
 
 QUERY_CREATE_HEMMORHAGIC_PROCEDURES_ALL = """
-CREATE TABLE my_schema.haemorrhagic_procedure_classification AS
+CREATE TABLE schema_name.haemorrhagic_procedure_classification AS
 SELECT
    p.procedure_concept_id,                     -- Select procedure concept ID
    c.concept_name,                             -- Select concept name (procedure name)
@@ -391,8 +391,8 @@ INNER JOIN (
        hosc.person_id,                             -- Select person_id
        MIN(ish.condition_start_date) AS earliest_start_date,  -- Earliest condition start date
        MAX(ish.condition_start_date) AS latest_start_date    -- Latest condition start date
-   FROM  my_schema.inpatient_stroke_haemorrhagic ish
-   INNER JOIN my_schema.haemorrhagic_only_stroke_cohort hosc
+   FROM  schema_name.inpatient_stroke_haemorrhagic ish
+   INNER JOIN schema_name.haemorrhagic_only_stroke_cohort hosc
        ON hosc.person_id = ish.person_id            -- Join with haemorrhagic only cohort
    GROUP BY hosc.person_id                        -- Group by person_id
 ) AS date_ranges
@@ -408,7 +408,7 @@ ORDER BY
 """
 
 QUERY_CREATE_ISCHEMIC_PROCEDURES_ALL = """
-CREATE TABLE my_schema.ischemic_procedure_classification AS
+CREATE TABLE schema_name.ischemic_procedure_classification AS
 SELECT
    p.procedure_concept_id,                     -- Select procedure concept ID
    c.concept_name,                             -- Select concept name (procedure name)
@@ -425,8 +425,8 @@ INNER JOIN (
        iosc.person_id,                             -- Select person_id
        MIN(isi.condition_start_date) AS earliest_start_date,  -- Earliest condition start date
        MAX(isi.condition_start_date) AS latest_start_date    -- Latest condition start date
-   FROM my_schema.inpatient_stroke_ischemic isi
-   INNER JOIN my_schema.ischemic_only_stroke_cohort iosc
+   FROM schema_name.inpatient_stroke_ischemic isi
+   INNER JOIN schema_name.ischemic_only_stroke_cohort iosc
        ON iosc.person_id = isi.person_id            -- Join with ischemic only cohort
    GROUP BY iosc.person_id                        -- Group by person_id
 ) AS date_ranges
@@ -442,9 +442,9 @@ ORDER BY
 """
 
 QUERY_CREATE_HEMMORHAGIC_TREATMENT_PROCEDURES_ONLY= """
-CREATE TABLE my_schema.haemorrhagic_procedure_rehab AS
+CREATE TABLE schema_name.haemorrhagic_procedure_rehab AS
 SELECT *
-FROM my_schema.haemorrhagic_procedure_classification
+FROM schema_name.haemorrhagic_procedure_classification
 WHERE LOWER(concept_name) LIKE '%therapy%'
   OR LOWER(concept_name) LIKE '%speech%'
   OR LOWER(concept_name) LIKE '%exercise%'
@@ -477,9 +477,9 @@ ORDER BY procedure_count DESC;
 """
 
 QUERY_CREATE_ISCHEMIC_TREATMENT_PROCEDURES_ONLY= """
-CREATE TABLE my_schema.ischemic_procedure_rehab AS
+CREATE TABLE schema_name.ischemic_procedure_rehab AS
 SELECT *
-FROM my_schema.ischemic_procedure_classification
+FROM schema_name.ischemic_procedure_classification
 WHERE LOWER(concept_name) LIKE '%therapy%'
   OR LOWER(concept_name) LIKE '%speech%'
   OR LOWER(concept_name) LIKE '%exercise%'
@@ -512,7 +512,7 @@ ORDER BY procedure_count DESC;
 """
 
 QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES= """
- CREATE TABLE my_schema.haemorrhagic_bucket_procedures AS
+ CREATE TABLE schema_name.haemorrhagic_bucket_procedures AS
 SELECT *,
        CASE
            WHEN hpr.procedure_concept_id IN (2314284,
@@ -723,10 +723,10 @@ SELECT *,
                                              2106908) THEN 'Surgical Procedures'
            ELSE 'Others'
        END AS procedure_category
-FROM my_schema.haemorrhagic_procedure_rehab hpr;
+FROM schema_name.haemorrhagic_procedure_rehab hpr;
 """
 QUERY_CREATE_ISCHEMIC_BUCKET_PROCEDURES= """
- CREATE TABLE my_schema.ischemic_bucket_procedures AS
+ CREATE TABLE schema_name.ischemic_bucket_procedures AS
 SELECT *,
        CASE
            WHEN ipr.procedure_concept_id IN (2314294,
@@ -968,7 +968,7 @@ SELECT *,
                                              2617415) THEN 'Surgical Procedures'
            ELSE 'Others'
        END AS procedure_category
-FROM my_schema.ischemic_procedure_rehab ipr ;
+FROM schema_name.ischemic_procedure_rehab ipr ;
 
 """
 
