@@ -59,11 +59,8 @@ def create_tables():
     plt.title(f"Ischemic Vs Haemorrhagic KDE Plot")
     plt.xticks(np.arange(0, 110, 10))
     plt.xlabel("first_discharge_duration(days)");
+    plt.show()
 
-    haem_discharges_df = haem_df.groupby("discharge_to_concept_name", as_index=False).agg(person_count=("person_id", pd.Series.nunique))
-    haem_discharges_df = haem_discharges_df.sort_values("person_count", ascending=False)
-    isc_discharges_df = isc_df.groupby("discharge_to_concept_name", as_index=False).agg(person_count=("person_id", pd.Series.nunique))
-    isc_discharges_df = isc_discharges_df.sort_values("person_count", ascending=False)
     
 
     

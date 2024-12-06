@@ -9,7 +9,6 @@ from queries import *
 
 def create_tables():
     try:
-        # Establish connection to Redshift
         conn = redshift_connector.connect(
             host=host,
             port=port,
@@ -24,6 +23,7 @@ def create_tables():
         return
 
     try:
+<<<<<<< HEAD
         # Fetch ischemic data
         cursor.execute(QUERY_FETCH_ISCHEMIC_ONLY_EDA.replace("schema_name", schema))
         df1 = cursor.fetch_dataframe()
@@ -31,24 +31,34 @@ def create_tables():
 
         # Fetch hemorrhagic data
         cursor.execute(QUERY_FETCH_HAEMORRHAGIC_ONLY_EDA.replace("schema_name", schema))
+=======
+        
+        cursor.execute(QEURY_FETCH_ISCHEMIC_ONLY_EDA.replace("schema_name", schema))
+        df1 = cursor.fetch_dataframe()
+        df1["stroke_type"] = "ischemic"
+
+        
+        cursor.execute(QEURY_FETCH_HAEMORRHAGIC_ONLY_EDA.replace("schema_name", schema))
+>>>>>>> ef7f12c2ac5352c929475df01971a1d5bf919821
         df2 = cursor.fetch_dataframe()
         df2["stroke_type"] = "hemorrhagic"
 
-        # Combine data
+        
         data = pd.concat([df1, df2], ignore_index=True)
-
-        print(data)
-# Process gender column
         data["gender"] = data["gender_concept_id"].apply(
             lambda x: "male" if x == 8507 else "female"
         )
 
+<<<<<<< HEAD
         # Process date columns
+=======
+        
+>>>>>>> ef7f12c2ac5352c929475df01971a1d5bf919821
         date_cols = ['condition_start_date', 'condition_end_date']
         for col in date_cols:
             data[col] = pd.to_datetime(data[col], errors='coerce')
 
-        # KDE plot for age distribution by stroke type
+       
         plt.figure(figsize=(10, 6))
         sns.kdeplot(data=data, x='age', hue='stroke_type', fill=True)
         plt.title('Age Distribution by Stroke Type')
@@ -56,12 +66,12 @@ def create_tables():
         plt.ylabel('Density')
         plt.show()
 
-        # Create age groups
+        
         age_bins = [20, 65, 85]
         age_labels = ['20-65', '65+']
         data['age_group'] = pd.cut(data['age'], bins=age_bins, labels=age_labels, right=False)
 
-        # Analyze age group distribution
+        
         age_group_counts = data.groupby(['age_group', 'stroke_type']).size().unstack(fill_value=0)
         total_age_group_counts = data.groupby('age_group').size()
 
@@ -78,7 +88,7 @@ def create_tables():
                 'Count': [total_20_65, total_65_plus],
             })
 
-            # Stroke type analysis
+            
             total_strokes = data['stroke_type'].value_counts()
             total_stroke_count = total_strokes.sum()
             ischemic_percentage = (total_strokes['ischemic'] / total_stroke_count) * 100
@@ -90,7 +100,7 @@ def create_tables():
                 'Percentage': [f'{ischemic_percentage:.2f}%', f'{hemorrhagic_percentage:.2f}%']
             })
 
-            # Display stroke data
+            
             plt.figure(figsize=(12, 5))
             plt.axis('off')
             table = plt.table(cellText=stroke_data.values, colLabels=stroke_data.columns, loc='center', cellLoc='center', colColours=["#f2f2f2"] * 3)
@@ -99,7 +109,7 @@ def create_tables():
             table.scale(1.5, 1.5)
             plt.show()
 
-            # Display ratio data
+            
             plt.figure(figsize=(12, 5))
             plt.axis('off')
             ratio_table = plt.table(cellText=ratio_data.values, 
@@ -114,7 +124,7 @@ def create_tables():
         else:
             print("Age groups '20-65' and/or '65+' are missing from the data!")
 
-        # Gender distribution plot
+        
         plt.figure(figsize=(12, 6))
         sns.countplot(data=data, x='gender', hue='stroke_type')
         plt.title('Gender Distribution by Stroke Type')
@@ -125,7 +135,7 @@ def create_tables():
         plt.tight_layout()
         plt.show()
 
-        # Gender-specific KDE plots
+        
         fig, axes = plt.subplots(1, 2, figsize=(16, 6), sharex=True)
         sns.kdeplot(data=data[data["gender"] == "male"], x="age", hue="stroke_type", fill=False, common_norm=False, alpha=0.6, linewidth=2, ax=axes[0])
         axes[0].set_title('Males: Age Distribution by Stroke Type')
