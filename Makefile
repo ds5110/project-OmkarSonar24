@@ -1,15 +1,17 @@
-fig1:
-	python src/first.py
+demographics :	
+	python src/demographics.py
 
-fig2:
-	python src/second.py
+tables :	
+	python src/create_base_tables.py
 
-fig3:
-	python src/third.py
+discharges :
+	python src/discharges.py
 
-<<<<<<< HEAD
-EDA:	
-=======
-EDA:
->>>>>>> ef7f12c2ac5352c929475df01971a1d5bf919821
-	python src/EDA.py
+procedure_buckets :
+	python src/procedure_buckets.py
+
+procedures_distinct_patients :
+	python src/procedures_distinct_patients.py
+
+eda :
+	python src/eda.py

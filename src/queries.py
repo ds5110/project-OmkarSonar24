@@ -395,7 +395,6 @@ JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept
 WHERE c.concept_id IN (372924,375557,376713,443454,441874,439847,432923) 
 GROUP BY c.concept_name 
 ORDER BY count DESC;
-
 """
 
 
@@ -1011,8 +1010,8 @@ FROM schema_name.ischemic_procedure_rehab ipr ;
 
 
 
-QUERY_FETCH_ISCHEMIC_ONLY_VISITS = "SELECT * FROM schema_name.ischemic_only_visits2;"
-QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = "SELECT * FROM schema_name.haemorrhagic_only_visits2;"
+QUERY_FETCH_ISCHEMIC_ONLY_VISITS = "SELECT * FROM schema_name.ischemic_only_visits;"
+QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = "SELECT * FROM schema_name.haemorrhagic_only_visits;"
 QUERY_FETCH_ISCHEMIC_ONLY_EDA = "SELECT * FROM schema_name.ischemic_only_stroke_cohort;"
 QUERY_FETCH_HAEMORRHAGIC_ONLY_EDA="SELECT * FROM schema_name.haemorrhagic_only_stroke_cohort;"
 
