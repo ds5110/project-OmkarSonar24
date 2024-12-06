@@ -103,7 +103,7 @@ axes[1].set_xticklabels(df2['concept_name'], rotation=45, ha='right', fontsize=1
 plt.tight_layout(pad=3.0)  # Added padding for better spacing around labels
  
 # Save the plot to a file (high-quality output) without cutting off labels
-plt.savefig("stroke_procedures_plot_with_percentage_and_count.jpg", format='jpg', dpi=300, bbox_inches='tight', pad_inches=0.5)
+plt.savefig("figs/stroke_procedures_plot_with_percentage_and_count.jpg", format='jpg', dpi=300, bbox_inches='tight', pad_inches=0.5)
  
 # Show the plot
 plt.show()

@@ -2,7 +2,7 @@ import configparser
 
 # Load configuration file
 config = configparser.ConfigParser()
-config.read('src\config.cfg')
+config.read('assets\config.cfg')
 
 # Redshift credentials
 host = config.get('redshift', 'host')
