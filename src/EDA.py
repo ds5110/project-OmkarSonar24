@@ -25,12 +25,12 @@ def create_tables():
 
     try:
         # Fetch ischemic data
-        cursor.execute(QEURY_FETCH_ISCHEMIC_ONLY_EDA.replace("schema_name", schema))
+        cursor.execute(QUERY_FETCH_ISCHEMIC_ONLY_EDA.replace("schema_name", schema))
         df1 = cursor.fetch_dataframe()
         df1["stroke_type"] = "ischemic"
 
         # Fetch hemorrhagic data
-        cursor.execute(QEURY_FETCH_HAEMORRHAGIC_ONLY_EDA.replace("schema_name", schema))
+        cursor.execute(QUERY_FETCH_HAEMORRHAGIC_ONLY_EDA.replace("schema_name", schema))
         df2 = cursor.fetch_dataframe()
         df2["stroke_type"] = "hemorrhagic"
 
@@ -44,8 +44,7 @@ def create_tables():
         )
 
         # Process date columns
-        date_cols = ['condition_start_date', 'condition_end_date', 
-                     'observation_start_date', 'observation_end_date']
+        date_cols = ['condition_start_date', 'condition_end_date']
         for col in date_cols:
             data[col] = pd.to_datetime(data[col], errors='coerce')
 

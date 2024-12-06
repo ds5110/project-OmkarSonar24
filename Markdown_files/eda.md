@@ -2,7 +2,6 @@
 
 Following are the figures we have plotted as a form of inital level EDA, of the OHDSI Pharmetrics+ Dataset, in context of stroke patients.
 
-<center>
 
 ```sql
 SELECT c.concept_name as stroke_type, COUNT (*) as count 
@@ -16,10 +15,7 @@ AND c.concept_name NOT LIKE '%sun stroke%'
 GROUP BY c.concept_name 
 ORDER BY count DESC;
 ```
-<figure>
-<figcaption>Figure 1 <figcaption>
-<img src="figs/fig1.jpg" width=650>
-</figure>
+![Figure 1](../figs/INITIAL_EDA_IMAGES/fig1.jpg)
 
 ```sql
 SELECT c.concept_name as stroke_type, COUNT (*) as count 
@@ -30,10 +26,7 @@ GROUP BY c.concept_name
 ORDER BY count DESC;
 ```
 
-<figure>
-<figcaption>Figure 2 <figcaption>
-<img src="figs/fig2.jpg" width=650>
-</figure>
+![Figure 1](../figs/INITIAL_EDA_IMAGES/fig2.jpg)
 
 
 ```sql
@@ -42,23 +35,15 @@ FROM work_dhande_ak210.visit_detail vo
 JOIN omop_cdm_53_pmtx_202203.concept c on vo.visit_detail_concept_id =c.concept_id order by vo.visit_occurrence_id ;
 ```
 
-<figure>
-<figcaption>Figure 3 <figcaption>
-<img src="figs/fig3.jpg" width=650>
-</figure>
-</center>
+![Figure 1](../figs/INITIAL_EDA_IMAGES/fig3.jpg)
 
 
 ## Story & Observation - 
 1. Starting with Figure 1 we have considered all the patients who had the substring "stroke" (case insensitive) as part of any of the conditions they have been diagnosed with, and plotted the ditribution of all the conditions that matched, indicating number of patients per condition.
 
 2. Realising a shortcoming of our approach from Figure 1, that Heat Strokes will get considered as a part of our cohort as well, we changed our approach to define a patient cohort who have been diagnosed with stroke, by referring the following concept IDs only -
-<center>
-<figure>
-<img src="assets/stroke_concept_ids.jpg" width=400>
-<figcaption>Stroke Concept IDs<figcaption>
-</figure>
-</center>
+
+![Figure 1](../assets/stroke_concept_ids.jpg)
 
 3. Creating a cohort of the patients above we proceeded with creating further plots, and as observed **Cerebral Infarction** is the most common stroke that arises out of all the 7 types considered.
 
@@ -84,3 +69,19 @@ JOIN omop_cdm_53_pmtx_202203.concept c on vo.visit_detail_concept_id =c.concept_
     ```
     make fig3
     ```
+
+
+
+#
+
+# New Changes / Improvements.
+
+After having consecutive meetings with the stakeholder , we have accomodated changes to out cohort and made the following changes.
+
+### Cohort Definition : 
+People with multiple strokes(ischemic and hemmorhagic) inpatient visits within 180 days of the observation period.
+
+
+
+
+
