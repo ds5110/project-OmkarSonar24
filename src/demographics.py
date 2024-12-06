@@ -23,7 +23,6 @@ def create_tables():
         return
 
     try:
-<<<<<<< HEAD
         # Fetch ischemic data
         cursor.execute(QUERY_FETCH_ISCHEMIC_ONLY_EDA.replace("schema_name", schema))
         df1 = cursor.fetch_dataframe()
@@ -31,7 +30,6 @@ def create_tables():
 
         # Fetch hemorrhagic data
         cursor.execute(QUERY_FETCH_HAEMORRHAGIC_ONLY_EDA.replace("schema_name", schema))
-=======
         
         cursor.execute(QEURY_FETCH_ISCHEMIC_ONLY_EDA.replace("schema_name", schema))
         df1 = cursor.fetch_dataframe()
@@ -39,7 +37,6 @@ def create_tables():
 
         
         cursor.execute(QEURY_FETCH_HAEMORRHAGIC_ONLY_EDA.replace("schema_name", schema))
->>>>>>> ef7f12c2ac5352c929475df01971a1d5bf919821
         df2 = cursor.fetch_dataframe()
         df2["stroke_type"] = "hemorrhagic"
 
@@ -49,11 +46,8 @@ def create_tables():
             lambda x: "male" if x == 8507 else "female"
         )
 
-<<<<<<< HEAD
         # Process date columns
-=======
         
->>>>>>> ef7f12c2ac5352c929475df01971a1d5bf919821
         date_cols = ['condition_start_date', 'condition_end_date']
         for col in date_cols:
             data[col] = pd.to_datetime(data[col], errors='coerce')

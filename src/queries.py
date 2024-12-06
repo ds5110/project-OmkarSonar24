@@ -373,6 +373,41 @@ GROUP BY ibp.procedure_concept_id, ibp.concept_name, ibp.procedure_category, ibp
 ORDER BY ibp.procedure_count DESC;
 """
 
+QUERY_FETCH_EDA_1="""
+SELECT c.concept_name as stroke_type, COUNT (*) as count 
+FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
+JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
+WHERE c.concept_name LIKE '%stroke%' 
+AND c.domain_id = 'Condition' 
+AND c.concept_name NOT LIKE '%heat stroke%' 
+AND c.concept_name NOT LIKE '%heatstroke%' 
+AND c.concept_name NOT LIKE '%sun stroke%' 
+GROUP BY c.concept_name 
+ORDER BY count DESC;
+
+"""
+
+
+QUERY_FETCH_EDA_2="""
+SELECT c.concept_name as stroke_type, COUNT (*) as count 
+FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
+JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
+WHERE c.concept_id IN (372924,375557,376713,443454,441874,439847,432923) 
+GROUP BY c.concept_name 
+ORDER BY count DESC;
+
+"""
+
+
+
+
+
+
+
+
+
+
+
 QUERY_CREATE_HEMMORHAGIC_PROCEDURES_ALL = """
 CREATE TABLE schema_name.haemorrhagic_procedure_classification AS
 SELECT
@@ -1002,10 +1037,10 @@ CREATE_TABLE_QUERY_MAP = {
     "ischemic_only_stroke_cohort": QUERY_CREATE_ISCHEMIC_ONLY_COHORT,
     "haemorrhagic_only_visits": QUERY_CREATE_HAEMORRHAGIC_ONLY_VISITS,
     "ischemic_only_visits": QUERY_CREATE_ISCHEMIC_ONLY_VISITS,
-    "hemmorhagic_bucket_procedures":QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES,
-    "ischemic_bucket_procedures":QUERY_CREATE_ISCHEMIC_BUCKET_PROCEDURES,
-    "ischemic_treatment_procedures_only":QUERY_CREATE_ISCHEMIC_TREATMENT_PROCEDURES_ONLY,
-    "hemmorhagic_treatment_procedures_only":QUERY_CREATE_HEMMORHAGIC_TREATMENT_PROCEDURES_ONLY,
     "hemmorhagic_procedures_all":QUERY_CREATE_HEMMORHAGIC_PROCEDURES_ALL,
     "ischemic_procedures_all":QUERY_CREATE_ISCHEMIC_PROCEDURES_ALL,
+    "ischemic_treatment_procedures_only":QUERY_CREATE_ISCHEMIC_TREATMENT_PROCEDURES_ONLY,
+    "hemmorhagic_treatment_procedures_only":QUERY_CREATE_HEMMORHAGIC_TREATMENT_PROCEDURES_ONLY,
+    "hemmorhagic_bucket_procedures":QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES,
+    "ischemic_bucket_procedures":QUERY_CREATE_ISCHEMIC_BUCKET_PROCEDURES
 }

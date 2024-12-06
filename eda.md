@@ -15,7 +15,7 @@ AND c.concept_name NOT LIKE '%sun stroke%'
 GROUP BY c.concept_name 
 ORDER BY count DESC;
 ```
-![Figure 1](../figs/INITIAL_EDA_IMAGES/fig1.jpg)
+![Figure 1](figs\INITIAL_EDA_IMAGES\fig1.jpg)
 
 ```sql
 SELECT c.concept_name as stroke_type, COUNT (*) as count 
@@ -26,7 +26,7 @@ GROUP BY c.concept_name
 ORDER BY count DESC;
 ```
 
-![Figure 1](../figs/INITIAL_EDA_IMAGES/fig2.jpg)
+![Figure 1](figs\INITIAL_EDA_IMAGES\fig2.jpg)
 
 
 ```sql
@@ -35,7 +35,7 @@ FROM work_dhande_ak210.visit_detail vo
 JOIN omop_cdm_53_pmtx_202203.concept c on vo.visit_detail_concept_id =c.concept_id order by vo.visit_occurrence_id ;
 ```
 
-![Figure 1](../figs/INITIAL_EDA_IMAGES/fig3.jpg)
+![Figure 1](figs\INITIAL_EDA_IMAGES\fig3.jpg)
 
 
 ## Story & Observation - 
@@ -43,7 +43,7 @@ JOIN omop_cdm_53_pmtx_202203.concept c on vo.visit_detail_concept_id =c.concept_
 
 2. Realising a shortcoming of our approach from Figure 1, that Heat Strokes will get considered as a part of our cohort as well, we changed our approach to define a patient cohort who have been diagnosed with stroke, by referring the following concept IDs only -
 
-![Figure 1](../assets/stroke_concept_ids.jpg)
+![Figure 1](assets\stroke_concept_ids.jpg)
 
 3. Creating a cohort of the patients above we proceeded with creating further plots, and as observed **Cerebral Infarction** is the most common stroke that arises out of all the 7 types considered.
 
