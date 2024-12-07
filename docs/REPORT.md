@@ -1,4 +1,17 @@
 # Overview
+- [Common Data Mode](#common-data-model)
+- [ERD of the Common Data Model](#erd-of-the-common-data-model)
+- [Creating a Cohort](#creating-a-cohort)
+   - [Defining Cohort Inclusion Criteria](#defining-cohort-inclusion-criteria)
+   - [Data Filtering](#data-filtering)
+   - [Final Cohorts](#final-cohorts)
+- [Key Findings](#key-findings)
+   - [1. Demographics](#1-demographics)
+   - [2. Study of Stroke Treatment Procedures](#2-study-of-stroke-treatment-procedures)
+   - [3. Patient Discharge Duration](#3-patient-discharge-duration)
+- [Challenges and Lessons Learned](#challenges-and-lessons-learned)
+- [Conclusion](#conclusion)
+
 Every 40 seconds, someone in the United States suffers a stroke, with 800,000 new cases annually. Stroke survivors face significant challenges, including deficits in mobility, cognition, and independence. Additionally, the care pathway is often fragmented, which hinders the achievement of optimal rehabilitation outcomes.
 
 This project explores the treatment pathways of stroke survivors using the IQVIA Pharmetrics+ dataset—a large commercial health insurance claims database. The focus is on analyzing the types of care provided to patients following a stroke, with particular attention to ischemic and hemorrhagic stroke types.
