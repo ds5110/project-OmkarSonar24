@@ -98,7 +98,7 @@ for idx, row in df1.iterrows():
 
 # Plot for Ischemic Stroke Procedures
 g2 = sns.barplot(
-    data=df2, x="concept_name", y="percentage", ax=axes[1], palette="Reds"
+    data=df2, x="concept_name", y="percentage", ax=axes[1], palette="Reds", hue="concept_name"
 )  # Concept name on x, percentage on y
 
 axes[1].set_title(
@@ -119,21 +119,22 @@ for idx, row in df2.iterrows():
         fontsize=12,
     )  # Increased label font size
 
+
+# Explicitly set x-tick labels for both subplots to avoid misalignment issues
+axes[0].set_xticks(np.arange(0,10),
+    labels=df1["concept_name"], horizontalalignment="right"
+)  # Increased font size for x-tick labels
+
+axes[1].set_xticks(np.arange(0,10),
+    labels=df2["concept_name"], horizontalalignment="right"
+)  # Increased font size for x-tick labels
+
 # Rotate x-axis labels for readability (Procedure names)
 axes[0].tick_params(
     axis="x", rotation=45, labelsize=12
 )  # Increased font size for x-tick labels
 axes[1].tick_params(
     axis="x", rotation=45, labelsize=12
-)  # Increased font size for x-tick labels
-
-# Explicitly set x-tick labels for both subplots to avoid misalignment issues
-axes[0].set_xticklabels(
-    df1["concept_name"], rotation=45, ha="right", fontsize=14
-)  # Increased font size for x-tick labels
-
-axes[1].set_xticklabels(
-    df2["concept_name"], rotation=45, ha="right", fontsize=14
 )  # Increased font size for x-tick labels
 
 axes[0].set_ylim([0, 14])
