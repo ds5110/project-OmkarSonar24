@@ -36,11 +36,12 @@ def create_tables():
             QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS.replace("schema_name", schema)
         )
         haem_df = cursor.fetch_dataframe()
-        print(f"Fetched Haemorrhagic Data")
+        print(f"(1/2)Fetched Haemorrhagic Data")
 
         cursor.execute(QUERY_FETCH_ISCHEMIC_ONLY_VISITS.replace("schema_name", schema))
         isc_df = cursor.fetch_dataframe()
-        print(f"Fetched Ischemic Data")
+        print(f"(2/2)Fetched Ischemic Data")
+        print(f"Creating the plots...")
 
         # Drop unwanted visit types
         haem_df = haem_df.drop(
@@ -55,7 +56,7 @@ def create_tables():
         isc_first_discharges_df, isc_stats = get_first_admission_durations(isc_df)
 
         # Display statistics
-        print(f"Haemorrhagic Stroke Stats-")
+        print(f"Hemorrhagic Stroke Stats-")
         print(json.dumps(haem_stats, indent=4))
         print(f"Ischemic Stroke Stats-")
         print(json.dumps(isc_stats, indent=4))

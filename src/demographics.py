@@ -64,9 +64,9 @@ def create_tables():
 
         # Table 1: Stroke distribution by age group
         age_group_counts = (
-            data.groupby(["age_group", "stroke_type"]).size().unstack(fill_value=0)
+            data.groupby(["age_group", "stroke_type"], observed=False).size().unstack(fill_value=0)
         )
-        total_age_group_counts = data.groupby("age_group").size()
+        total_age_group_counts = data.groupby("age_group", observed=False).size()
 
         if (
             "18-65" in total_age_group_counts.index

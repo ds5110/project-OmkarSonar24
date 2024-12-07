@@ -67,7 +67,7 @@ def get_first_admission_durations(sub_df):
     stats = {
         "mean": float(average_duration),
         "median": float(median_duration),
-        "mode": int(mode_duration),
+        "mode": float(mode_duration.iloc[0]),
         "std": float(std_dev),
     }
 

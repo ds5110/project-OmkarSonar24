@@ -10,8 +10,8 @@ demographics : tables
 discharges : tables
 	python -B src/discharges.py
 
-procedure_buckets : tables
+treatment_buckets : tables
 	python -B src/procedure_buckets.py
 
-procedures_distinct_patients : tables
+treatments : tables
 	python -B src/procedures_distinct_patients.py
