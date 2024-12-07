@@ -25,35 +25,31 @@ except Exception as e:
     exit()
 
 # Fetch data
-df1 = pd.read_sql(QUERY_FETCH_EDA_1.replace("schema_name", schema), conn)
-df2 = pd.read_sql(QUERY_FETCH_EDA_2.replace("schema_name", schema), conn)
+cursor.execute(QUERY_FETCH_EDA_1.replace("schema_name", schema))
+df1 = cursor.fetch_dataframe()
+cursor.execute(QUERY_FETCH_EDA_2.replace("schema_name", schema))
+df2 = cursor.fetch_dataframe()
 
-sns.set(style="whitegrid")
+sns.set_theme(style="whitegrid")
 
 # Plotting a bar chart
-plt.figure(figsize=(12, 6))
-sns.barplot(data=df1, x='stroke_type', y='count', palette='Blues_d')
+plt.figure(figsize=(10, 6))
+sns.barplot(data=df1, x='stroke_type', y='count', hue='stroke_type', palette="Blues_d")
 plt.xticks(rotation=45, ha='right')
 plt.title("Counts of Different Types of Strokes")
 plt.xlabel("Stroke Type")
 plt.ylabel("Count")
+plt.tight_layout()
 plt.savefig("figs/counts_of_different_types_of_strokes.png", bbox_inches='tight')
-plt.show()
 
-sns.set(style="whitegrid")
-
-
-plt.figure(figsize=(12, 6))
-sns.barplot(data=df2, x='stroke_type', y='count', palette='Blues_d')
+plt.figure(figsize=(8, 4))
+sns.barplot(data=df2, x='stroke_type', y='count', hue="stroke_type", palette='Blues_d')
 plt.xticks(rotation=45, ha='right')
 plt.title("Counts of Different Types of Strokes")
 plt.xlabel("Stroke Type")
 plt.ylabel("Count")
-
-
+plt.tight_layout()
 plt.savefig("figs/counts_of_different_types_of_strokes_plot_2.png", bbox_inches='tight')
-
-
 plt.show()
 
 cursor.close()

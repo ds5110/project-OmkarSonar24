@@ -1,17 +1,17 @@
-demographics :	
-	python src/demographics.py
+eda :
+	python src/eda.py
 
 tables :	
 	python src/create_base_tables.py
 
-discharges :
+demographics : tables
+	python src/demographics.py
+
+discharges : tables
 	python src/discharges.py
 
-procedure_buckets :
+procedure_buckets : tables
 	python src/procedure_buckets.py
 
-procedures_distinct_patients :
+procedures_distinct_patients : tables
 	python src/procedures_distinct_patients.py
-
-eda :
-	python src/eda.py

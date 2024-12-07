@@ -15,7 +15,7 @@ AND c.concept_name NOT LIKE '%sun stroke%'
 GROUP BY c.concept_name 
 ORDER BY count DESC;
 ```
-![Figure 1](figs\INITIAL_EDA_IMAGES\fig1.jpg)
+![Figure 1](figs\counts_of_different_types_of_strokes.png)
 
 ```sql
 SELECT c.concept_name as stroke_type, COUNT (*) as count 
@@ -26,7 +26,7 @@ GROUP BY c.concept_name
 ORDER BY count DESC;
 ```
 
-![Figure 1](figs\INITIAL_EDA_IMAGES\fig2.jpg)
+![Figure 1](figs\counts_of_different_types_of_strokes_plot_2.png)
 
 
 ```sql
