@@ -5,14 +5,51 @@ This project attempts to explore stroke survivor's treatment pathways using the 
 ## Common Data Model
 ![OMOP_CDM](../assets/omop_cdm.png) 
 
+The OMOP CDM provides a standardized data  structure for organizing and viewing healthcare data. This makes it easier for researchers to analyze data across different healthcare systems and databases, even if the data originates from various sources or regions with differing formats.
+
 ## ERD of the Common Data Model 
 ![Figure 1](../assets/erd.jpg)
+
+The OMOP CDM consists of several core tables that store data, including:
+
+**Person:** Information about patients (e.g., age, sex, race). <br>
+**Observation Period:** The time frames during which data is available for a patient. <br>
+**Condition Occurrence:** Data about diseases or conditions diagnosed for a patient. <br>
+**Drug Exposure:** Information on the drugs that patients have been prescribed or taken. <br>
+**Procedure Occurrence:** Data on procedures or treatments that were performed. <br>
+**Measurement:** Observations and laboratory results (e.g., blood pressure, lab test results). <br>
+These tables are related by standardized identifiers, ensuring consistency across datasets. <br>
 
 ## Creating a cohort
 ![Cohort Creation Method](../assets/Method_Flowchart.jpg)
 
-# Key Findings
 We started upon Casey's cohort and further enhanced those cohorts to build specific cohorts for ischemic stroke patients and hemorrhagic stroke patients. We also found out that 3,378 shared symptoms of both the strokes and created a separate cohort for these patients.
+We focused on patients having the following concept ids -
+
+| Stroke Type         | Concept ID | Concept Name               | Code               | Vocabulary | Excluded | Descendants |
+|---------------------|------------|----------------------------|--------------------|------------|----------|-------------|
+| Ischemic Stroke     | 372924     | Cerebral artery occlusion   | 20059004           | SNOMED     | NO       | YES         |
+| Ischemic Stroke     | 375557     | Cerebral embolism           | 75543006           | SNOMED     | NO       | YES         |
+| Ischemic Stroke     | 443454     | Cerebral infarction         | 432504007          | SNOMED     | NO       | YES         |
+| Ischemic Stroke     | 441874     | Cerebral thrombosis         | 71444005           | SNOMED     | NO       | YES         |
+| Ischemic Stroke     | 4310996    | Ischemic stroke             | 422504002          | SNOMED     | NO       | YES         |
+| Ischemic Stroke     | 45876543   | Transient ischemic attack - TIA | LA14278-8         | SNOMED     | NO       | YES         |
+| Ischemic Stroke     | 4319330    | Brain stem ischemia         | 95456009           | SNOMED     | NO       | YES         |
+| Haemorrhagic Stroke | 376713     | Cerebral hemorrage          | 274100004          | SNOMED     | NO       | YES         |
+| Haemorrhagic Stroke | 439847     | Intracranial hemorrhage     | 1386000            | SNOMED     | NO       | YES         |
+| Haemorrhagic Stroke | 432923     | Subarachnoid hemorrage      | 21454007           | SNOMED     | NO       | YES         |
+| Haemorrhagic Stroke | 35609033   | Haemorrhagic stroke         | 1078001000000100   | SNOMED     | NO       | YES         |
+| Haemorrhagic Stroke | 4319328    | Brain stem hemorrhage       | 95454007           | SNOMED     | NO       | YES         |
+
+After discussion with our stakeholder, we decide to not pursue cryptogenic stroke and brain stem stroke. Once we had the finalized concept ids, we included all their descendant concepts and focused on kinds of visits of the patients, particularly - 
+| Concept ID | Concept Name               | Code               | Vocabulary | Excluded | Descendants |
+|------------|----------------------------|--------------------|------------|----------|-------------|
+| 262     | Emergency Room and Inpatient Visit   | 20059004           | Visit     | NO       | YES         |
+| 9203     | Emergency Room Visit   | 20059004           | Visit     | NO       | YES         |
+| 9201     | Inpatient Visit   | 20059004           | Visit     | NO       | YES         |
+
+
+# Key Findings
 
 We analyzed transitions across treatment locations such as inpatient rehabilitation and emergency room visits.
 We also identified patterns of care for stroke subtypes, such as Ischemic and Hemorrhagic strokes.
