@@ -142,40 +142,31 @@ The following commands reproduces the charts for patient demographics comparison
 make demographics
 ```
 Plots reproduced after running the above command will be as follows - <br>
-<center>
-<img src="figs/age_distribution_by_gender_and_stroke_type.png" alt="figs/age_distribution_by_gender_and_stroke_type.png" width=500>
-<img src="figs/age_group_ratio_table.png" alt="figs/age_group_ratio_table.png" width=300>
-<img src="figs/stroke_type_distribution_table.png" alt="figs/stroke_type_distribution_table.png" width=300> <br>
-<img src="figs/age_distribution_by_stroke_type.png" alt="figs/age_distribution_by_stroke_type.png" width=300>
-<img src="figs/gender_distribution_by_stroke_type.png" alt="figs/gender_distribution_by_stroke_type.png" width=300>
-</center>
+<img src="figs/age_distribution_by_gender_and_stroke_type.png" alt="figs/age_distribution_by_gender_and_stroke_type.png" width=600> <br>
+<img src="figs/age_group_ratio_table.png" alt="figs/age_group_ratio_table.png" width=400> <img src="figs/stroke_type_distribution_table.png" alt="figs/stroke_type_distribution_table.png" width=400> <br>
+<img src="figs/age_distribution_by_stroke_type.png" alt="figs/age_distribution_by_stroke_type.png" width=400>  <img src="figs/gender_distribution_by_stroke_type.png" alt="figs/gender_distribution_by_stroke_type.png" width=400>
 
 The following command reproduces the charts for discharge trends between ischemic and haemorrhagic stroke patients
 ```
 make discharges
 ```
 Plots reproduced after running the above command will be as follows - <br>
-<center>
-<img src="figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png" alt="figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png" width=300>
-</center>
+<img src="figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png" alt="figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png" width=500>
 
 The following command reproduces the charts for most frequent treatment procedures - both individually and grouped by types of procedure - distributions between ischemic and haemorrhagic stroke patients
 ```
 make treatment
 ```
 Plots reproduced after running the above command will be as follows - <br>
-<center>
 <img src="figs/stroke_procedures_plot_with_percentage_and_count.jpg" alt="figs/stroke_procedures_plot_with_percentage_and_count.jpg" width=500>
-</center>
 
 ```
 make treatment_buckets
 ```
 Plots reproduced after running the above command will be as follows - <br>
-<center>
-<img src="figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png" alt="figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png" width=300>
-<img src="figs/procedures_distribution_ischemic_stroke_pie_chart.png" alt="figs/procedures_distribution_ischemic_stroke_pie_chart.png" width=300>
-</center>
+
+<img src="figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png" alt="figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png" width=300>  <img src="figs/procedures_distribution_ischemic_stroke_pie_chart.png" alt="figs/procedures_distribution_ischemic_stroke_pie_chart.png" width=300>
+
 
 ## Resources -
 -  [The Book of OHDSI](https://ohdsi.github.io/TheBookOfOhdsi/)
