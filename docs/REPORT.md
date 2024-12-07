@@ -74,20 +74,36 @@ This methodology allowed us to focus on the most relevant data and ensure that e
 
 # Key Findings
 
-We analyzed transitions across treatment locations such as inpatient rehabilitation and emergency room visits.
-We also identified patterns of care for stroke subtypes, such as Ischemic and Hemorrhagic strokes.
-
 Stroke care transitions are a critical area for improving patient outcomes, yet gaps in data and understanding make it challenging to optimize care. By refining the original project scope to focus on specific pathways and treatment types, this analysis provides insights that can inform rehabilitation protocols.
 
+## Demographics
 ![age_distribution_by_stroke_type](../figs/age_distribution_by_stroke_type.png)
 There is a direct relationship between age and stroke risk; as people age, they become more susceptible to experiencing strokes.
 
-![age_distribution_by_stroke_type](../figs/age_group_ratio_table.png)
-About 81% of all strokes are classified as ischemic strokes, making them the most common type.​
+![stroke_type_distribution_table](../figs/stroke_type_distribution_table.png)
+About 81% of all strokes are classified as ischemic strokes, making them the most common type
 
-Around 73% of all strokes occur in individuals aged 65 and older, emphasizing the heightened stroke risk in older populations.​
+![age_group_ratio_table](../figs/age_group_ratio_table.png)
+Around 77% of all strokes occur in individuals aged 65 and older, emphasizing the heightened stroke risk in older populations.​
 
 It is possible for an individual to experience both ischemic and hemorrhagic strokes, but ischemic strokes are more likely to convert into hemorrhagic strokes than vice-versa.​
+
+![gender_distribution_by_stroke_type](../figs/gender_distribution_by_stroke_type.png)
+
+The total count of ischemic strokes is higher in females compared to males, which contradicts existing research that suggests males typically have a higher incidence of ischemic strokes.​
+
+Males have a slightly higher incidence of hemorrhagic strokes compared to females, although the difference is minimal.​
+
+![age_distribution_by_gender_and_stroke_type](../figs/age_distribution_by_gender_and_stroke_type.png)
+
+Females tend to be 4-5 years older than males at the time of their first stroke occurrence, a trend consistent for both ischemic and hemorrhagic strokes.​
+
+Due to their older age at first stroke, females experience a higher mortality rate, leading to an overall higher death rate from strokes compared to males - can be verified if mortality data is available in the future.​
+
+## Study of procedures
+
+![stroke_procedures_plot_with_percentage_and_count](../figs/stroke_procedures_plot_with_percentage_and_count.png)
+
 
 ## Challenges and Lessons Learned
 1. Data Limitations:
