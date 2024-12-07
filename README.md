@@ -167,6 +167,10 @@ Plots reproduced after running the above command will be as follows - <br>
 
 <img src="figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png" alt="figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png" width=300>  <img src="figs/procedures_distribution_ischemic_stroke_pie_chart.png" alt="figs/procedures_distribution_ischemic_stroke_pie_chart.png" width=300>
 
+## Attributions -
+A Thank you to our stakeholder [Rob Cavanaugh, PhD](https://roux.northeastern.edu/people/rob-cavanaugh/) and Professor [Philip Bogden, PhD](https://roux.northeastern.edu/people/philip-bogden/) for providing us with this problem statement the research motivation, their guidance and support has been paramount.
+
+A Thank you to the fellow student teams who were working on different avenues of the OHDSI Database for collaborating on common issues and helping us with reproducibility and patient discharge time calculations.
 
 ## Resources -
 -  [The Book of OHDSI](https://ohdsi.github.io/TheBookOfOhdsi/)
