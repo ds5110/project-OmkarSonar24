@@ -105,7 +105,9 @@ make: *** No targets specified and no makefile found.  Stop.
 Sometimes the changes might not reflect , to do this , restart the terminal or Git Bash or Powershell for the changes to take effect.
 
 ### Reproducing the results -
-Note: The commands may take a few minutes to run especially if you are running them for the first time, as creating intermediate tables in the database involve some heavy SQL queries.
+Note 1: The commands may take a few minutes to run especially if you are running them for the first time, as creating intermediate tables in the database involve some heavy SQL queries.
+
+Note 2: All the figures will be displayed and saved in the `figs` folder after running the commands mentioned in the [steps](#step-2-reproduce-the-eda) below.
 
 All the steps below are to be executed in the Anaconda Powershell and not the default Windows Powershell as on Windows conda only works in the Anaconda Powershell.
 
@@ -128,15 +130,52 @@ Run the following command to reproduce the EDA plots -
 ```
 make eda
 ```
+Plots reproduced after running the above command will be as follows - <br>
+<center>
+<img src="figs/counts_of_different_types_of_strokes.png" alt="figs/counts_of_different_types_of_strokes.png" width=300>
+<img src="figs/counts_of_different_types_of_strokes_plot_2.png" alt="figs/counts_of_different_types_of_strokes_plot_2.png" width=300>
+</center>
+
 ### Step 3 Reproduce the plots from the final report -
 The following commands reproduces the charts for patient demographics comparison between ischemic and haemorrhagic stroke.
 ```
 make demographics
 ```
+Plots reproduced after running the above command will be as follows - <br>
+<center>
+<img src="figs/age_distribution_by_gender_and_stroke_type.png" alt="figs/age_distribution_by_gender_and_stroke_type.png" width=500>
+<img src="figs/age_group_ratio_table.png" alt="figs/age_group_ratio_table.png" width=300>
+<img src="figs/stroke_type_distribution_table.png" alt="figs/stroke_type_distribution_table.png" width=300> <br>
+<img src="figs/age_distribution_by_stroke_type.png" alt="figs/age_distribution_by_stroke_type.png" width=300>
+<img src="figs/gender_distribution_by_stroke_type.png" alt="figs/gender_distribution_by_stroke_type.png" width=300>
+</center>
+
 The following command reproduces the charts for discharge trends between ischemic and haemorrhagic stroke patients
 ```
 make discharges
 ```
+Plots reproduced after running the above command will be as follows - <br>
+<center>
+<img src="figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png" alt="figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png" width=300>
+</center>
+
+The following command reproduces the charts for most frequent treatment procedures - both individually and grouped by types of procedure - distributions between ischemic and haemorrhagic stroke patients
+```
+make treatment
+```
+Plots reproduced after running the above command will be as follows - <br>
+<center>
+<img src="figs/stroke_procedures_plot_with_percentage_and_count.jpg" alt="figs/stroke_procedures_plot_with_percentage_and_count.jpg" width=500>
+</center>
+
+```
+make treatment_buckets
+```
+Plots reproduced after running the above command will be as follows - <br>
+<center>
+<img src="figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png" alt="figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png" width=300>
+<img src="figs/procedures_distribution_ischemic_stroke_pie_chart.png" alt="figs/procedures_distribution_ischemic_stroke_pie_chart.png" width=300>
+</center>
 
 ## Resources -
 -  [The Book of OHDSI](https://ohdsi.github.io/TheBookOfOhdsi/)
