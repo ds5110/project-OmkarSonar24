@@ -21,6 +21,16 @@ The dataset used is the OHDSI Pharmetrics+ database which is a medical and pharm
 The OHDSI Pharmetrics+ Database follows the [OMOP Common Data Model](https://www.ohdsi.org/data-standardization) as a design standard for structuring this large database.
 
 ## Reproducibily and Instructions -
+- [Environment Setup](#environment-setup--)
+  - [Download and install Git](#download-and-install-git--)
+  - [Download and install Miniconda](#download-and-install-miniconda--)
+  - [Install Make](#install-make--)
+    - [Installing Chocolatey package installer](#installing-chocolatey-package-installer--)
+    - [Installing make using chocolatey package manager](#installing-make-using-chocolatey-package-manager--)
+- [Reproducing the results](#reproducing-the-results--)
+  - [Step 1 Create intermediate tables](#step-1-create-intermediate-tables--)
+  - [Step 2 Reproduce the EDA](#step-2-reproduce-the-eda--)
+  - [Step 3 Reproduce the plots from the final report](#step-3-reproduce-the-plots-from-the-final-report--)
 The access to OHDSI Pharmetrics+ database is only possible through Amazon Workspaces. The user must have access to Amazon Workspaces to reproduce the following results on it.
 
 ### Environment Setup -
@@ -51,7 +61,7 @@ This approach has two steps :
 * Installing Chocolatey package installer.
 * Installing make using chocolatey package manager. 
 
-#### Installing Chocolatey package installer.
+#### Installing Chocolatey package installer -
 
 To install make , we will be using chocolatey package installer. Chocolatey is a software management automation tool for Windows that wraps installers, executables, zips, and scripts into compiled packages.
 
@@ -78,7 +88,7 @@ Please run 'choco -?' or 'choco <command> -?' for help menu.
 
 Although the version can change , but if you get a similar output , they Chocolatey package installer is successfully installed.
 
-#### Installing make using chocolatey package manager
+#### Installing make using chocolatey package manager -
 
 Now since we have the package installer installed , we can use it to install make.
 
