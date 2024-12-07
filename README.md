@@ -57,9 +57,11 @@ To install make , we will be using chocolatey package installer. Chocolatey is a
 
 * Navigate to [Official page of chocolatey package installer.](https://chocolatey.org/install)
 
-* Execute the below command in Windows Powershell (Administrator mode).
+* Execute the below command in Windows Powershell (Administrator mode). Make sure you run the Powershell as an administrator else the install will fail.
 
-<img src= "assets/script.png">
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
 
 This will install chocolatey package installer in the amazon workspaces.
 
@@ -105,8 +107,19 @@ Sometimes the changes might not reflect , to do this , restart the terminal or G
 ### Reproducing the results -
 Note: The commands may take a few minutes to run especially if you are running them for the first time, as creating intermediate tables in the database involve some heavy SQL queries.
 
+All the steps below are to be executed in the Anaconda Powershell and not the default Windows Powershell as on Windows conda only works in the Anaconda Powershell.
+
 ### Step 1 Create intermediate tables -
-Clone this github repository. Update your Amazon Redshift credentials in the config file placed at - `config/config.cfg`. To create the intermediate tables run the following command -
+Clone this github repository. and setup the conda environment - 
+```
+conda env create -f ./environment.yml
+```
+Activate the conda environment - 
+```
+conda activate myenv
+```
+
+Update your Amazon Redshift credentials in the config file placed at - `config/config.cfg`. To create the intermediate tables run the following command -
 ```
 make tables
 ```

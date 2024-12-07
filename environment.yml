@@ -2,7 +2,7 @@ name: myenv
 channels:
     - conda-forge
 dependencies:
-    - redshift-connector=2.1.3
+    - redshift_connector=2.1.4=pyhd8ed1ab_0
     - pandas=2.2.2
     - matplotlib=3.9.2
     - seaborn=0.13.2
