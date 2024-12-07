@@ -11,7 +11,7 @@ discharges : tables
 	python -B src/discharges.py
 
 treatment_buckets : tables
-	python -B src/procedure_buckets.py
+	python -B src/treatment_buckets.py
 
 treatments : tables
-	python -B src/procedures_distinct_patients.py
+	python -B src/treatments.py

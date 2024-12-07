@@ -333,9 +333,9 @@ ORDER BY
 """
 
 QUERY_CREATE_HEMMORHAGIC_PROCEDURE_REHAB = """
-CREATE TABLE work_sonar_o213.haemorrhagic_procedure_rehab AS
+CREATE TABLE schema_name.haemorrhagic_procedure_rehab AS
 SELECT *
-FROM work_sonar_o213.haemorrhagic_procedure_classification
+FROM schema_name.haemorrhagic_procedure_classification
 WHERE (
       LOWER(concept_name) LIKE '%therapy%'
    OR LOWER(concept_name) LIKE '%speech%'
@@ -379,9 +379,9 @@ ORDER BY procedure_count DESC;
 """
 
 QUERY_CREATE_ISCHEMIC_PROCEDURE_REHAB = """
-CREATE TABLE work_sonar_o213.ischemic_procedure_rehab AS
+CREATE TABLE schema_name.ischemic_procedure_rehab AS
 SELECT *
-FROM work_sonar_o213.ischemic_procedure_classification
+FROM schema_name.ischemic_procedure_classification
 WHERE (
       LOWER(concept_name) LIKE '%therapy%'
    OR LOWER(concept_name) LIKE '%speech%'
