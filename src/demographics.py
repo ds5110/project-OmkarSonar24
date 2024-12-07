@@ -118,11 +118,11 @@ def create_tables():
             plt.figure(figsize=(12, 5))
             plt.axis("off")
             ratio_table = plt.table(
-                cellText=ratio_data.values,
-                colLabels=ratio_data.columns,
-                loc="center",
-                cellLoc="center",
-                colColours=["#f2f2f2"] * 2,
+            cellText=ratio_data.values,
+            colLabels=ratio_data.columns,
+            loc="center",
+            cellLoc="center",
+            colColours=["#f2f2f2"] * len(ratio_data.columns),
             )
             ratio_table.auto_set_font_size(False)
             ratio_table.set_fontsize(12)
