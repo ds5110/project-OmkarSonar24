@@ -2,6 +2,15 @@
 Every 40 seconds, someone in the United States suffers a stroke, with 800,000 new strokes occurring annually. Stroke survivors face significant challenges, including deficits in mobility, cognition, and independence, as well as a fragmented care pathway that hinders optimal rehabilitation outcomes.
 This project attempts to explore stroke survivor's treatment pathways using the IQVIA Pharmetrics+ dataset, a large commercial health insurance claims database. The aim is to analyze what kind of care is associated to patients after they have a stroke, particularly ischemic and hemorrhagic.
 
+## Common Data Model
+![OMOP_CDM](../assets/omop_cdm.png) 
+
+## ERD of the Common Data Model 
+![Figure 1](../assets/erd.jpg)
+
+## Creating a cohort
+![Cohort Creation Method](../assets/Method_Flowchart.jpg)
+
 # Key Findings
 We started upon Casey's cohort and further enhanced those cohorts to build specific cohorts for ischemic stroke patients and hemorrhagic stroke patients. We also found out that 3,378 shared symptoms of both the strokes and created a separate cohort for these patients.
 
