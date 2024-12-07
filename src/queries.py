@@ -407,7 +407,7 @@ ORDER BY count DESC;
 
 
 
-QUERY_CREATE_HEMMORHAGIC_PROCEDURES_ALL = """
+QUERY_CREATE_HEMMORHAGIC_PROCEDURE_CLASSIFICATION = """
 CREATE TABLE schema_name.haemorrhagic_procedure_classification AS
 SELECT
    p.procedure_concept_id,                     -- Select procedure concept ID
@@ -441,7 +441,7 @@ ORDER BY
    procedure_count DESC;                          -- Order by count in descending order
 """
 
-QUERY_CREATE_ISCHEMIC_PROCEDURES_ALL = """
+QUERY_CREATE_ISCHEMIC_PROCEDURES_CLASSIFICATION = """
 CREATE TABLE schema_name.ischemic_procedure_classification AS
 SELECT
    p.procedure_concept_id,                     -- Select procedure concept ID
@@ -475,7 +475,7 @@ ORDER BY
    procedure_count DESC;                          -- Order by count in descending order
 """
 
-QUERY_CREATE_HEMMORHAGIC_TREATMENT_PROCEDURES_ONLY= """
+QUERY_CREATE_HEMMORHAGIC_PROCEDURE_REHAB= """
 CREATE TABLE schema_name.haemorrhagic_procedure_rehab AS
 SELECT *
 FROM schema_name.haemorrhagic_procedure_classification
@@ -510,7 +510,7 @@ WHERE LOWER(concept_name) LIKE '%therapy%'
 ORDER BY procedure_count DESC;
 """
 
-QUERY_CREATE_ISCHEMIC_TREATMENT_PROCEDURES_ONLY= """
+QUERY_CREATE_ISCHEMIC_PROCEDURE_REHAB= """
 CREATE TABLE schema_name.ischemic_procedure_rehab AS
 SELECT *
 FROM schema_name.ischemic_procedure_classification
@@ -1036,10 +1036,10 @@ CREATE_TABLE_QUERY_MAP = {
     "ischemic_only_stroke_cohort": QUERY_CREATE_ISCHEMIC_ONLY_COHORT,
     "haemorrhagic_only_visits": QUERY_CREATE_HAEMORRHAGIC_ONLY_VISITS,
     "ischemic_only_visits": QUERY_CREATE_ISCHEMIC_ONLY_VISITS,
-    "hemmorhagic_procedures_all":QUERY_CREATE_HEMMORHAGIC_PROCEDURES_ALL,
-    "ischemic_procedures_all":QUERY_CREATE_ISCHEMIC_PROCEDURES_ALL,
-    "ischemic_treatment_procedures_only":QUERY_CREATE_ISCHEMIC_TREATMENT_PROCEDURES_ONLY,
-    "hemmorhagic_treatment_procedures_only":QUERY_CREATE_HEMMORHAGIC_TREATMENT_PROCEDURES_ONLY,
-    "hemmorhagic_bucket_procedures":QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES,
+    "haemorrhagic_procedure_classification": QUERY_CREATE_HEMMORHAGIC_PROCEDURE_CLASSIFICATION,
+    "ischemic_procedure_classification": QUERY_CREATE_ISCHEMIC_PROCEDURES_CLASSIFICATION,
+    "ischemic_procedure_rehab":QUERY_CREATE_ISCHEMIC_PROCEDURE_REHAB,
+    "haemorrhagic_procedure_rehab":QUERY_CREATE_HEMMORHAGIC_PROCEDURE_REHAB,
+    "haemorrhagic_bucket_procedures":QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES,
     "ischemic_bucket_procedures":QUERY_CREATE_ISCHEMIC_BUCKET_PROCEDURES
 }

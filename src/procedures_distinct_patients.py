@@ -45,16 +45,16 @@ procedure_name_map_1 = {
 df1['concept_name'] = df1['procedure_concept_id'].map(procedure_name_map_1)
 
 procedure_name_map_2 = {
-    2314284  : 'Strength exercises',
-    2314294    : 'Dynamic Activities',
-    4203780    : 'Respiratory Therapy',
-    2314285  : 'Neuromuscular Reeducation',
-    2314287  : 'Gait Training',
-    2314297  : 'Self-Care/Home Management Training',
-    42627910  : 'Occupational Therapy Evaluation, Medium Complexity',
-    42627954 : 'Occupational Therapy Evaluation, Low Complexity',
-    2313701  : 'Individual Speech/Language/Communication Treatment',
-    2314290  : 'Manual Therapy'
+    2314284: 'Strength exercises',
+    2314294: 'Dynamic Activities',
+    4203780: 'Respiratory Therapy',
+    2314285: 'Neuromuscular Reeducation',
+    2314287: 'Gait Training',
+    2314297: 'Self-Care/Home Management Training',
+    42627910: 'Occupational Therapy Evaluation, Medium Complexity',
+    4262795: 'Occupational Therapy Evaluation, Low Complexity',
+    2313701: 'Individual Speech/Language/Communication Treatment',
+    2314290: 'Manual Therapy'
 }
 df2['concept_name'] = df2['procedure_concept_id'].map(procedure_name_map_2)
  
@@ -103,7 +103,7 @@ axes[1].set_xticklabels(df2['concept_name'], rotation=45, ha='right', fontsize=1
 plt.tight_layout(pad=3.0)  # Added padding for better spacing around labels
  
 # Save the plot to a file (high-quality output) without cutting off labels
-plt.savefig("figs/stroke_procedures_plot_with_percentage_and_count.jpg", format='jpg', dpi=300, bbox_inches='tight', pad_inches=0.5)
+# plt.savefig("figs/stroke_procedures_plot_with_percentage_and_count.jpg", format='jpg', dpi=300, bbox_inches='tight', pad_inches=0.5)
  
 # Show the plot
 plt.show()
