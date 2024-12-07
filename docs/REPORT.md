@@ -100,22 +100,50 @@ Females tend to be 4-5 years older than males at the time of their first stroke 
 
 Due to their older age at first stroke, females experience a higher mortality rate, leading to an overall higher death rate from strokes compared to males - can be verified if mortality data is available in the future.​
 
-## Study of procedures
+## Study of Stroke Treatment Procedures
 
-![stroke_procedures_plot_with_percentage_and_count](../figs/stroke_procedures_plot_with_percentage_and_count.png)
+![stroke_procedures_plot_with_percentage_and_count](../figs/stroke_procedures_plot_with_percentage_and_count.jpg)
 
+An analysis of the procedures used for different stroke types reveals that nine out of the top 10 most common procedures are shared between both ischemic and hemorrhagic stroke care. Physical exercises play a pivotal role in stroke rehabilitation, alongside other significant treatments such as respiratory therapy and speech therapy.
+
+![procedures_distribution_haemorrhagic_stroke_pie_chart](../figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png)
+
+![procedures_distribution_ischemic_stroke_pie_chart](../figs/procedures_distribution_ischemic_stroke_pie_chart.png)
+
+To further explore the data, we categorized the various treatment methods into groups, including physical therapy, occupational therapy, speech and language therapy, mental health and psychotherapy, surgical procedures, and other therapies. Despite the differences in stroke types, the distribution of these procedures remains quite similar across the board, reinforcing the critical role of physical therapy in stroke rehabilitation. However, one notable difference is the use of surgical procedures: only 0.03% of ischemic stroke cases involve surgery, compared to 1.40% of hemorrhagic stroke cases.
+
+## Patient Discharge Duration
+![ischemic_vs_haemorrhagic_discharge_duration_kde](../figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png)
+
+Hemorrhagic strokes are generally more dangerous than ischemic strokes, which often results in longer patient care duration.​
+
+Our analysis shows that the average duration for the first visit after a hemorrhagic stroke is about 13 days, compared to 10 days for ischemic strokes.​
+
+Around the 8-day mark, there is a higher density of patients with hemorrhagic strokes compared to ischemic strokes. This trend remains consistent up to the 60-day mark.
 
 ## Challenges and Lessons Learned
-1. Data Limitations:
-Insurance Claims data lacks direct measures of patient outcomes like mortality rates, recurrence of strokes, or quality of life improvements.
-Data irregularities posed challenges in creating standardized comparisons and finalizing conclusions.
-2. Time Constraints:
-The compressed project timeline limited the extent of data exploration.
-Considering the size of the database, large, interconnected tables required significant time for querying and analysis.
-3. Scope Refinement:
-Shifting focus from broad care transitions to analyzing specific treatment pathways related to different kinds of therapies, allowed for actionable insights.
+
+1. **Data Limitations**  
+   The insurance claims data we worked with did not provide direct measures of key patient outcomes such as mortality rates, stroke recurrence, or improvements in quality of life. Additionally, data irregularities made it challenging to create standardized comparisons and draw definitive conclusions.
+
+2. **Time Constraints**  
+   The limited project timeline restricted the depth of data exploration. Given the large size of the database, querying and analyzing interconnected tables required more time than was available.
+
+3. **Scope Refinement**  
+   Initially, the project aimed to explore broad care transitions, but narrowing the focus to analyze specific treatment pathways for different types of therapies and discharge dates proved to be more productive, leading to actionable insights.
 
 
 
 # Conclusion
-This project represents an initial foray into analyzing healthcare claims data to better understand stroke survivor care. The findings shed light on the treatment journeys of stroke survivors, laying the groundwork for further exploration. Future work could incorporate machine learning techniques to classify pathways and identify key factors driving differences in outcomes.
+
+This project establishes a cohort definition that lays the foundation for future research comparing ischemic and hemorrhagic stroke patients.
+
+Further analysis of the differences and similarities between these two groups could provide valuable insights. Potential avenues for deeper investigation include:
+
+- Performing a comparative analysis of the combined patient cohort to gain a comprehensive understanding.
+- Exploring the similarities between hemorrhagic and ischemic stroke patients to determine whether they should follow similar treatment pathways.
+- Evaluating the effectiveness of treatment pathways based on the number of individual procedures required after the initial stroke occurrence.
+- Analyzing life expectancy outcomes following different treatment pathways.
+
+To improve stroke patient care and enhance the effectiveness of our project, it is crucial to ensure that the data used is complete and reliable, free from missing values. Identifying care pathways that can reduce mortality rates and improve post-stroke symptom severity depends on the accuracy of data analysis and its clear, effective visualization.
+
