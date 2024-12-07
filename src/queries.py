@@ -1,3 +1,7 @@
+##############################
+##  TABLE CREATION QUERIES  ##
+##############################
+
 QUERY_CREATE_INPATIENT_HAEMORRHAGIC_COHORT = """
 SELECT co.condition_occurrence_id,
        co.person_id,
@@ -220,7 +224,7 @@ WHERE hsc.person_id NOT IN
     (SELECT person_id
      FROM schema_name.common_people_cohort);
 """
-    
+
 QUERY_CREATE_ISCHEMIC_ONLY_COHORT = f"""
 SELECT isc.* INTO schema_name.ischemic_only_stroke_cohort
 FROM schema_name.ischemic_stroke_cohort isc
@@ -258,153 +262,6 @@ INNER JOIN omop_cdm_53_pmtx_202203.concept c3 ON vo.discharge_to_concept_id = c3
 WHERE vo.visit_start_date >= iosc.condition_start_date 
 ORDER BY iosc.person_id, iosc.condition_start_date, vo.visit_start_date ;
 """
-
-QUERY_FETCH_PROCEDURE_PLOT1_1="""
-WITH FirstLastCondition AS (
-    SELECT
-        ish.person_id,
-        MIN(ish.condition_start_date) AS first_condition_start_date,
-        MAX(ish.condition_start_date) AS last_condition_start_date
-    FROM schema_name.inpatient_stroke_haemorrhagic ish
-    GROUP BY ish.person_id
-)
-SELECT 
-    hbp.procedure_concept_id, 
-    hbp.concept_name, 
-    COUNT(DISTINCT hosc.person_id) AS distinct_person_count
-FROM schema_name.haemorrhagic_only_stroke_cohort hosc
-INNER JOIN omop_cdm_53_pmtx_202203.procedure_occurrence po 
-    ON po.person_id = hosc.person_id
-INNER JOIN schema_name.haemorrhagic_bucket_procedures hbp 
-    ON hbp.procedure_concept_id = po.procedure_concept_id
-INNER JOIN FirstLastCondition flc 
-    ON flc.person_id = hosc.person_id
-WHERE po.procedure_date >= flc.first_condition_start_date
-  AND po.procedure_date < (flc.last_condition_start_date + INTERVAL '180 days')
-  AND po.procedure_concept_id != 2617378
-GROUP BY hbp.procedure_concept_id, hbp.concept_name
-ORDER BY distinct_person_count DESC
-LIMIT 10;
-"""
-
-QUERY_FETCH_PROCEDURE_PLOT1_2="""
-WITH FirstLastCondition AS (
-    SELECT
-        isi.person_id,
-        MIN(isi.condition_start_date) AS first_condition_start_date,
-        MAX(isi.condition_start_date) AS last_condition_start_date
-    FROM schema_name.inpatient_stroke_ischemic isi
-    GROUP BY isi.person_id
-)
-SELECT 
-    ibp.procedure_concept_id, 
-    ibp.concept_name, 
-    COUNT(DISTINCT iosc.person_id) AS distinct_person_count
-FROM schema_name.ischemic_only_stroke_cohort iosc
-INNER JOIN omop_cdm_53_pmtx_202203.procedure_occurrence po 
-    ON po.person_id = iosc.person_id
-INNER JOIN schema_name.ischemic_bucket_procedures ibp 
-    ON ibp.procedure_concept_id = po.procedure_concept_id
-INNER JOIN FirstLastCondition flc 
-    ON flc.person_id = iosc.person_id
-WHERE po.procedure_date >= flc.first_condition_start_date
-  AND po.procedure_date < (flc.last_condition_start_date + INTERVAL '180 days')
-  AND po.procedure_concept_id != 2617378
-GROUP BY ibp.procedure_concept_id, ibp.concept_name
-ORDER BY distinct_person_count DESC
-LIMIT 10;
-"""
-
-
-QUERY_FETCH_PROCEDURE_PLOT2_1 = """
-
-WITH FirstLastCondition AS (
-    SELECT
-        ish.person_id,
-        MIN(ish.condition_start_date) AS first_condition_start_date,
-        MAX(ish.condition_start_date) AS last_condition_start_date
-    FROM schema_name.inpatient_stroke_haemorrhagic ish
-    GROUP BY ish.person_id
-)
-SELECT 
-    hbp.procedure_concept_id, 
-    hbp.concept_name, 
-    hbp.procedure_category,
-    hbp.procedure_count,
-    COUNT(DISTINCT hosc.person_id) AS distinct_person_count
-FROM schema_name.haemorrhagic_only_stroke_cohort hosc
-INNER JOIN omop_cdm_53_pmtx_202203.procedure_occurrence po 
-    ON po.person_id = hosc.person_id
-INNER JOIN schema_name.haemorrhagic_bucket_procedures hbp 
-    ON hbp.procedure_concept_id = po.procedure_concept_id
-INNER JOIN FirstLastCondition flc 
-    ON flc.person_id = hosc.person_id
-WHERE po.procedure_date >= flc.first_condition_start_date
-  AND po.procedure_date < (flc.last_condition_start_date + INTERVAL '180 days')
-GROUP BY hbp.procedure_concept_id, hbp.concept_name, hbp.procedure_category, hbp.procedure_count
-ORDER BY hbp.procedure_count DESC;
-"""
-
-QUERY_FETCH_PROCEDURE_PLOT2_2 = """
-WITH FirstLastCondition AS (
-    SELECT
-        isi.person_id,
-        MIN(isi.condition_start_date) AS first_condition_start_date,
-        MAX(isi.condition_start_date) AS last_condition_start_date
-    FROM schema_name.inpatient_stroke_ischemic isi
-    GROUP BY isi.person_id
-)
-SELECT 
-    ibp.procedure_concept_id, 
-    ibp.concept_name, 
-    ibp.procedure_category,
-    ibp.procedure_count,
-    COUNT(DISTINCT iosc.person_id) AS distinct_person_count
-FROM schema_name.ischemic_only_stroke_cohort iosc
-INNER JOIN omop_cdm_53_pmtx_202203.procedure_occurrence po 
-    ON po.person_id = iosc.person_id
-INNER JOIN schema_name.ischemic_bucket_procedures ibp 
-    ON ibp.procedure_concept_id = po.procedure_concept_id
-INNER JOIN FirstLastCondition flc 
-    ON flc.person_id = iosc.person_id
-WHERE po.procedure_date >= flc.first_condition_start_date
-  AND po.procedure_date < (flc.last_condition_start_date + INTERVAL '180 days')
-GROUP BY ibp.procedure_concept_id, ibp.concept_name, ibp.procedure_category, ibp.procedure_count
-ORDER BY ibp.procedure_count DESC;
-"""
-
-QUERY_FETCH_EDA_1="""
-SELECT c.concept_name as stroke_type, COUNT (*) as count 
-FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
-JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
-WHERE c.concept_name LIKE '%stroke%' 
-AND c.domain_id = 'Condition' 
-AND c.concept_name NOT LIKE '%heat stroke%' 
-AND c.concept_name NOT LIKE '%heatstroke%' 
-AND c.concept_name NOT LIKE '%sun stroke%' 
-GROUP BY c.concept_name 
-ORDER BY count DESC;
-
-"""
-
-
-QUERY_FETCH_EDA_2="""
-SELECT c.concept_name as stroke_type, COUNT (*) as count 
-FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
-JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
-WHERE c.concept_id IN (372924,375557,376713,443454,441874,439847,432923) 
-GROUP BY c.concept_name 
-ORDER BY count DESC;
-"""
-
-
-
-
-
-
-
-
-
 
 
 QUERY_CREATE_HEMMORHAGIC_PROCEDURE_CLASSIFICATION = """
@@ -475,7 +332,7 @@ ORDER BY
    procedure_count DESC;                          -- Order by count in descending order
 """
 
-QUERY_CREATE_HEMMORHAGIC_PROCEDURE_REHAB= """
+QUERY_CREATE_HEMMORHAGIC_PROCEDURE_REHAB = """
 CREATE TABLE schema_name.haemorrhagic_procedure_rehab AS
 SELECT *
 FROM schema_name.haemorrhagic_procedure_classification
@@ -510,7 +367,7 @@ WHERE LOWER(concept_name) LIKE '%therapy%'
 ORDER BY procedure_count DESC;
 """
 
-QUERY_CREATE_ISCHEMIC_PROCEDURE_REHAB= """
+QUERY_CREATE_ISCHEMIC_PROCEDURE_REHAB = """
 CREATE TABLE schema_name.ischemic_procedure_rehab AS
 SELECT *
 FROM schema_name.ischemic_procedure_classification
@@ -545,8 +402,8 @@ WHERE LOWER(concept_name) LIKE '%therapy%'
 ORDER BY procedure_count DESC;
 """
 
-QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES= """
- CREATE TABLE schema_name.haemorrhagic_bucket_procedures AS
+QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES = """
+CREATE TABLE schema_name.haemorrhagic_bucket_procedures AS
 SELECT *,
        CASE
            WHEN hpr.procedure_concept_id IN (2314284,
@@ -759,7 +616,8 @@ SELECT *,
        END AS procedure_category
 FROM schema_name.haemorrhagic_procedure_rehab hpr;
 """
-QUERY_CREATE_ISCHEMIC_BUCKET_PROCEDURES= """
+
+QUERY_CREATE_ISCHEMIC_BUCKET_PROCEDURES = """
  CREATE TABLE schema_name.ischemic_bucket_procedures AS
 SELECT *,
        CASE
@@ -1006,30 +864,160 @@ FROM schema_name.ischemic_procedure_rehab ipr ;
 
 """
 
+#############################
+##  DATA FETCHING QUERIES  ##
+#############################
 
+QUERY_FETCH_EDA_1 = """
+SELECT c.concept_name as stroke_type, COUNT (*) as count 
+FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
+JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
+WHERE c.concept_name LIKE '%stroke%' 
+AND c.domain_id = 'Condition' 
+AND c.concept_name NOT LIKE '%heat stroke%' 
+AND c.concept_name NOT LIKE '%heatstroke%' 
+AND c.concept_name NOT LIKE '%sun stroke%' 
+GROUP BY c.concept_name 
+ORDER BY count DESC;
 
+"""
 
+QUERY_FETCH_EDA_2 = """
+SELECT c.concept_name as stroke_type, COUNT (*) as count 
+FROM omop_cdm_53_pmtx_202203.condition_occurrence AS co 
+JOIN omop_cdm_53_pmtx_202203.concept AS c ON co.condition_concept_id = c.concept_id 
+WHERE c.concept_id IN (372924,375557,376713,443454,441874,439847,432923) 
+GROUP BY c.concept_name 
+ORDER BY count DESC;
+"""
+
+QUERY_FETCH_PROCEDURE_PLOT1_1 = """
+WITH FirstLastCondition AS (
+    SELECT
+        ish.person_id,
+        MIN(ish.condition_start_date) AS first_condition_start_date,
+        MAX(ish.condition_start_date) AS last_condition_start_date
+    FROM schema_name.inpatient_stroke_haemorrhagic ish
+    GROUP BY ish.person_id
+)
+SELECT 
+    hbp.procedure_concept_id, 
+    hbp.concept_name, 
+    COUNT(DISTINCT hosc.person_id) AS distinct_person_count
+FROM schema_name.haemorrhagic_only_stroke_cohort hosc
+INNER JOIN omop_cdm_53_pmtx_202203.procedure_occurrence po 
+    ON po.person_id = hosc.person_id
+INNER JOIN schema_name.haemorrhagic_bucket_procedures hbp 
+    ON hbp.procedure_concept_id = po.procedure_concept_id
+INNER JOIN FirstLastCondition flc 
+    ON flc.person_id = hosc.person_id
+WHERE po.procedure_date >= flc.first_condition_start_date
+  AND po.procedure_date < (flc.last_condition_start_date + INTERVAL '180 days')
+  AND po.procedure_concept_id != 2617378
+GROUP BY hbp.procedure_concept_id, hbp.concept_name
+ORDER BY distinct_person_count DESC
+LIMIT 10;
+"""
+
+QUERY_FETCH_PROCEDURE_PLOT1_2 = """
+WITH FirstLastCondition AS (
+    SELECT
+        isi.person_id,
+        MIN(isi.condition_start_date) AS first_condition_start_date,
+        MAX(isi.condition_start_date) AS last_condition_start_date
+    FROM schema_name.inpatient_stroke_ischemic isi
+    GROUP BY isi.person_id
+)
+SELECT 
+    ibp.procedure_concept_id, 
+    ibp.concept_name, 
+    COUNT(DISTINCT iosc.person_id) AS distinct_person_count
+FROM schema_name.ischemic_only_stroke_cohort iosc
+INNER JOIN omop_cdm_53_pmtx_202203.procedure_occurrence po 
+    ON po.person_id = iosc.person_id
+INNER JOIN schema_name.ischemic_bucket_procedures ibp 
+    ON ibp.procedure_concept_id = po.procedure_concept_id
+INNER JOIN FirstLastCondition flc 
+    ON flc.person_id = iosc.person_id
+WHERE po.procedure_date >= flc.first_condition_start_date
+  AND po.procedure_date < (flc.last_condition_start_date + INTERVAL '180 days')
+  AND po.procedure_concept_id != 2617378
+GROUP BY ibp.procedure_concept_id, ibp.concept_name
+ORDER BY distinct_person_count DESC
+LIMIT 10;
+"""
+
+QUERY_FETCH_PROCEDURE_PLOT2_1 = """
+
+WITH FirstLastCondition AS (
+    SELECT
+        ish.person_id,
+        MIN(ish.condition_start_date) AS first_condition_start_date,
+        MAX(ish.condition_start_date) AS last_condition_start_date
+    FROM schema_name.inpatient_stroke_haemorrhagic ish
+    GROUP BY ish.person_id
+)
+SELECT 
+    hbp.procedure_concept_id, 
+    hbp.concept_name, 
+    hbp.procedure_category,
+    hbp.procedure_count,
+    COUNT(DISTINCT hosc.person_id) AS distinct_person_count
+FROM schema_name.haemorrhagic_only_stroke_cohort hosc
+INNER JOIN omop_cdm_53_pmtx_202203.procedure_occurrence po 
+    ON po.person_id = hosc.person_id
+INNER JOIN schema_name.haemorrhagic_bucket_procedures hbp 
+    ON hbp.procedure_concept_id = po.procedure_concept_id
+INNER JOIN FirstLastCondition flc 
+    ON flc.person_id = hosc.person_id
+WHERE po.procedure_date >= flc.first_condition_start_date
+  AND po.procedure_date < (flc.last_condition_start_date + INTERVAL '180 days')
+GROUP BY hbp.procedure_concept_id, hbp.concept_name, hbp.procedure_category, hbp.procedure_count
+ORDER BY hbp.procedure_count DESC;
+"""
+
+QUERY_FETCH_PROCEDURE_PLOT2_2 = """
+WITH FirstLastCondition AS (
+    SELECT
+        isi.person_id,
+        MIN(isi.condition_start_date) AS first_condition_start_date,
+        MAX(isi.condition_start_date) AS last_condition_start_date
+    FROM schema_name.inpatient_stroke_ischemic isi
+    GROUP BY isi.person_id
+)
+SELECT 
+    ibp.procedure_concept_id, 
+    ibp.concept_name, 
+    ibp.procedure_category,
+    ibp.procedure_count,
+    COUNT(DISTINCT iosc.person_id) AS distinct_person_count
+FROM schema_name.ischemic_only_stroke_cohort iosc
+INNER JOIN omop_cdm_53_pmtx_202203.procedure_occurrence po 
+    ON po.person_id = iosc.person_id
+INNER JOIN schema_name.ischemic_bucket_procedures ibp 
+    ON ibp.procedure_concept_id = po.procedure_concept_id
+INNER JOIN FirstLastCondition flc 
+    ON flc.person_id = iosc.person_id
+WHERE po.procedure_date >= flc.first_condition_start_date
+  AND po.procedure_date < (flc.last_condition_start_date + INTERVAL '180 days')
+GROUP BY ibp.procedure_concept_id, ibp.concept_name, ibp.procedure_category, ibp.procedure_count
+ORDER BY ibp.procedure_count DESC;
+"""
 
 QUERY_FETCH_ISCHEMIC_ONLY_VISITS = "SELECT * FROM schema_name.ischemic_only_visits;"
-QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = "SELECT * FROM schema_name.haemorrhagic_only_visits;"
+QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = (
+    "SELECT * FROM schema_name.haemorrhagic_only_visits;"
+)
 QUERY_FETCH_ISCHEMIC_ONLY_EDA = "SELECT * FROM schema_name.ischemic_only_stroke_cohort;"
-QUERY_FETCH_HAEMORRHAGIC_ONLY_EDA="SELECT * FROM schema_name.haemorrhagic_only_stroke_cohort;"
-
-# QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS = """SELECT 
-# person_id, 
-# visit_start_date, visit_end_date, visit_concept_id, visit_concept_name, 
-# discharge_to_concept_id, discharge_to_concept_name  FROM schema_name.haemorrhagic_only_visits hov;"""
-
-# QUERY_FETCH_ISCHEMIC_ONLY_VISITS = """SELECT 
-# person_id, 
-# visit_start_date, visit_end_date, visit_concept_id, visit_concept_name, 
-# discharge_to_concept_id, discharge_to_concept_name  FROM schema_name.ischemic_only_visits iov;"""
+QUERY_FETCH_HAEMORRHAGIC_ONLY_EDA = (
+    "SELECT * FROM schema_name.haemorrhagic_only_stroke_cohort;"
+)
 
 
 CREATE_TABLE_QUERY_MAP = {
     "inpatient_stroke_haemorrhagic": QUERY_CREATE_INPATIENT_HAEMORRHAGIC_COHORT,
-    "haemorrhagic_stroke_cohort": QUERY_CREATE_HAEMORRHAGIC_STROKE_COHORT,
     "inpatient_stroke_ischemic": QUERY_CREATE_INPATIENT_ISCHEMIC_COHORT,
+    "haemorrhagic_stroke_cohort": QUERY_CREATE_HAEMORRHAGIC_STROKE_COHORT,
     "ischemic_stroke_cohort": QUERY_CREATE_ISCHEMIC_STROKE_COHORT,
     "common_people_cohort": QUERY_CREATE_COMMON_STROKE_COHORT,
     "haemorrhagic_only_stroke_cohort": QUERY_CREATE_HAEMORRHAGIC_ONLY_COHORT,
@@ -1038,8 +1026,8 @@ CREATE_TABLE_QUERY_MAP = {
     "ischemic_only_visits": QUERY_CREATE_ISCHEMIC_ONLY_VISITS,
     "haemorrhagic_procedure_classification": QUERY_CREATE_HEMMORHAGIC_PROCEDURE_CLASSIFICATION,
     "ischemic_procedure_classification": QUERY_CREATE_ISCHEMIC_PROCEDURES_CLASSIFICATION,
-    "ischemic_procedure_rehab":QUERY_CREATE_ISCHEMIC_PROCEDURE_REHAB,
-    "haemorrhagic_procedure_rehab":QUERY_CREATE_HEMMORHAGIC_PROCEDURE_REHAB,
-    "haemorrhagic_bucket_procedures":QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES,
-    "ischemic_bucket_procedures":QUERY_CREATE_ISCHEMIC_BUCKET_PROCEDURES
+    "ischemic_procedure_rehab": QUERY_CREATE_ISCHEMIC_PROCEDURE_REHAB,
+    "haemorrhagic_procedure_rehab": QUERY_CREATE_HEMMORHAGIC_PROCEDURE_REHAB,
+    "haemorrhagic_bucket_procedures": QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES,
+    "ischemic_bucket_procedures": QUERY_CREATE_ISCHEMIC_BUCKET_PROCEDURES,
 }

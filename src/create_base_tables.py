@@ -1,15 +1,13 @@
 import redshift_connector
+
 from queries import *
 from utils import *
+
 
 def create_tables():
     try:
         conn = redshift_connector.connect(
-            host=host,
-            port=port,
-            database=dbname,
-            user=user,
-            password=password
+            host=host, port=port, database=dbname, user=user, password=password
         )
         print("Connected to Redshift")
         cursor = conn.cursor()
@@ -32,7 +30,9 @@ def create_tables():
             exists = cursor.fetchone()[0]
 
             if exists:
-                print(f"Table '{schema}.{table_name}' already exists. Skipping creation.")
+                print(
+                    f"Table '{schema}.{table_name}' already exists. Skipping creation."
+                )
             else:
                 print(f"Table '{table_name}' does not exist. Creating it...")
                 query = query.replace("schema_name", schema)
@@ -47,6 +47,7 @@ def create_tables():
     cursor.close()
     conn.close()
     print("Connection closed.")
+
 
 # Run the script
 if __name__ == "__main__":

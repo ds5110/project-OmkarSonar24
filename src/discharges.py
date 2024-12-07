@@ -1,25 +1,23 @@
-import os
-import redshift_connector
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import json
-from utils import *
+import os
+
+import matplotlib.pyplot as plt
+import numpy as np
+import redshift_connector
+import seaborn as sns
+
 from queries import *
+from utils import *
 
 # Ensure the directory exists
-os.makedirs('figs', exist_ok=True)
+os.makedirs("figs", exist_ok=True)
+
 
 def create_tables():
     try:
         # Connect to Redshift
         conn = redshift_connector.connect(
-            host=host,
-            port=port,
-            database=dbname,
-            user=user,
-            password=password
+            host=host, port=port, database=dbname, user=user, password=password
         )
         print("Connected to Redshift")
         cursor = conn.cursor()
@@ -34,17 +32,23 @@ def create_tables():
     try:
         print(f"Starting data fetch from OHDSI database")
         # Fetch data
-        cursor.execute(QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS.replace("schema_name", schema))
+        cursor.execute(
+            QUERY_FETCH_HAEMORRHAGIC_ONLY_VISITS.replace("schema_name", schema)
+        )
         haem_df = cursor.fetch_dataframe()
         print(f"Fetched Haemorrhagic Data")
-        
+
         cursor.execute(QUERY_FETCH_ISCHEMIC_ONLY_VISITS.replace("schema_name", schema))
         isc_df = cursor.fetch_dataframe()
         print(f"Fetched Ischemic Data")
 
         # Drop unwanted visit types
-        haem_df = haem_df.drop(haem_df[haem_df["visit_concept_id"].isin(unwanted_visit_concept_ids)].index)
-        isc_df = isc_df.drop(isc_df[isc_df["visit_concept_id"].isin(unwanted_visit_concept_ids)].index)
+        haem_df = haem_df.drop(
+            haem_df[haem_df["visit_concept_id"].isin(unwanted_visit_concept_ids)].index
+        )
+        isc_df = isc_df.drop(
+            isc_df[isc_df["visit_concept_id"].isin(unwanted_visit_concept_ids)].index
+        )
 
         # Calculate First Discharges
         haem_first_discharges_df, haem_stats = get_first_admission_durations(haem_df)
@@ -70,7 +74,7 @@ def create_tables():
         plt.xticks(np.arange(0, 110, 10))
         plt.xlabel("First Discharge Duration (days)")
         plt.tight_layout()
-        plt.savefig('figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png')
+        plt.savefig("figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png")
         plt.show()
 
     finally:
@@ -78,6 +82,7 @@ def create_tables():
         cursor.close()
         conn.close()
         print("Connection closed.")
+
 
 # Run the script
 if __name__ == "__main__":
