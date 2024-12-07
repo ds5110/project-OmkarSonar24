@@ -1,11 +1,10 @@
 import os
-import textwrap
 
 import matplotlib.pyplot as plt
 import pandas as pd
 import redshift_connector
 import seaborn as sns
-
+import numpy as np
 from queries import *
 from utils import *
 
@@ -39,9 +38,10 @@ procedure_name_map_1 = {
     2314287: "Gait Training",
     2314297: "Self-Care/Home Management Training",
     42627910: "Occupational Therapy Evaluation, Medium Complexity",
-    42627954: "Occupational Therapy Evaluation, Low Complexity",
     2313701: "Individual Speech/Language/Communication Treatment",
     2314290: "Manual Therapy",
+    44816446: "Speech Sound & Language Evaluation"
+
 }
 df1["concept_name"] = df1["procedure_concept_id"].map(procedure_name_map_1)
 
@@ -53,7 +53,7 @@ procedure_name_map_2 = {
     2314287: "Gait Training",
     2314297: "Self-Care/Home Management Training",
     42627910: "Occupational Therapy Evaluation, Medium Complexity",
-    4262795: "Occupational Therapy Evaluation, Low Complexity",
+    42627954: "Occupational Therapy Evaluation, Low Complexity",
     2313701: "Individual Speech/Language/Communication Treatment",
     2314290: "Manual Therapy",
 }
@@ -75,8 +75,8 @@ fig, axes = plt.subplots(
 )  # Increased figure size for better label space
 
 # Plot for Haemorrhagic Stroke Procedures
-sns.barplot(
-    data=df1, x="concept_name", y="percentage", ax=axes[0], palette="Blues"
+g1 = sns.barplot(
+    data=df1, x="concept_name", y="percentage", ax=axes[0], palette="Blues", hue="concept_name"
 )  # Concept name on x, percentage on y
 axes[0].set_title(
     "Haemorrhagic Stroke Procedures", fontsize=18
@@ -97,9 +97,10 @@ for idx, row in df1.iterrows():
     )  # Increased label font size
 
 # Plot for Ischemic Stroke Procedures
-sns.barplot(
+g2 = sns.barplot(
     data=df2, x="concept_name", y="percentage", ax=axes[1], palette="Reds"
 )  # Concept name on x, percentage on y
+
 axes[1].set_title(
     "Ischemic Stroke Procedures", fontsize=18
 )  # Increased title font size
@@ -130,15 +131,19 @@ axes[1].tick_params(
 axes[0].set_xticklabels(
     df1["concept_name"], rotation=45, ha="right", fontsize=14
 )  # Increased font size for x-tick labels
+
 axes[1].set_xticklabels(
     df2["concept_name"], rotation=45, ha="right", fontsize=14
 )  # Increased font size for x-tick labels
+
+axes[0].set_ylim([0, 14])
+axes[1].set_ylim([0, 14])
 
 # Adjust layout to ensure proper spacing for the x-axis labels
 plt.tight_layout(pad=3.0)  # Added padding for better spacing around labels
 
 # Save the plot to a file (high-quality output) without cutting off labels
-# plt.savefig("figs/stroke_procedures_plot_with_percentage_and_count.jpg", format='jpg', dpi=300, bbox_inches='tight', pad_inches=0.5)
+plt.savefig("figs/stroke_procedures_plot_with_percentage_and_count.jpg", format='jpg', dpi=300, bbox_inches='tight', pad_inches=0.5)
 
 # Show the plot
 plt.show()
