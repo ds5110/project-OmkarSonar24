@@ -25,7 +25,7 @@ These tables are linked by standardized identifiers, ensuring consistency across
 ## Creating a Cohort
 ![Cohort Creation Method](../assets/Method_Flowchart.jpg)
 
-Our cohort creation process began with Casey's cohort, which was then refined to create specific cohorts for ischemic and hemorrhagic stroke patients. During the process, we identified 3,378 patients who exhibited symptoms of both types of stroke, prompting the creation of a separate cohort for these individuals.
+Our cohort creation process began with Casey's cohort, which was then refined to create specific cohorts for our project goal.
 
 ### Defining Cohort Inclusion Criteria
 
@@ -46,7 +46,7 @@ We focused on patients with the following concept IDs:
 | Haemorrhagic Stroke | 35609033   | Haemorrhagic stroke         | 1078001000000100   | SNOMED     | NO       | YES         |
 | Haemorrhagic Stroke | 4319328    | Brain stem hemorrhage       | 95454007           | SNOMED     | NO       | YES         |
 
-After discussions with our stakeholders, we decided to exclude patients with cryptogenic stroke and brain stem stroke from the analysis. With the finalized concept IDs in hand, we included all their descendant concepts for a broader and more comprehensive dataset.
+After discussions with our stakeholder, Rob, we decided to exclude patients with cryptogenic stroke and brain stem stroke from the analysis. With the finalized concept IDs in hand, we included all their descendant concepts for a broader and more comprehensive dataset.
 
 Next, we focused on the types of visits these patients had by considering:
 
