@@ -4,7 +4,7 @@ This project was a part of DS5110 - Introduction to Data Management and Processi
 The project team consist of -
 - Akash Dhande
 - Omkar Sonar
-- Rama Krishna Cavali
+- Rama Krishna Chavali
 - Jermine German
 
 Stakeholder - [Rob Cavanaugh, PhD](https://roux.northeastern.edu/people/rob-cavanaugh/) -- Roux Institute
