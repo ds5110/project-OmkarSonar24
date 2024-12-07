@@ -333,73 +333,95 @@ ORDER BY
 """
 
 QUERY_CREATE_HEMMORHAGIC_PROCEDURE_REHAB = """
-CREATE TABLE schema_name.haemorrhagic_procedure_rehab AS
+CREATE TABLE work_sonar_o213.haemorrhagic_procedure_rehab AS
 SELECT *
-FROM schema_name.haemorrhagic_procedure_classification
-WHERE LOWER(concept_name) LIKE '%therapy%'
-  OR LOWER(concept_name) LIKE '%speech%'
-  OR LOWER(concept_name) LIKE '%exercise%'
-  OR LOWER(concept_name) LIKE '%skill%'
-  OR LOWER(concept_name) LIKE '%physical%'
-  OR LOWER(concept_name) LIKE '%occupational%'
-  OR LOWER(concept_name) LIKE '%rehabilitation%'
-  OR LOWER(concept_name) LIKE '%recovery%'
-  OR LOWER(concept_name) LIKE '%motor%'
-  OR LOWER(concept_name) LIKE '%neuroplasticity%'
-  OR LOWER(concept_name) LIKE '%cognitive%'
-  OR LOWER(concept_name) LIKE '%movement%'
-  OR LOWER(concept_name) LIKE '%functional%'
-  OR LOWER(concept_name) LIKE '%balance%'
-  OR LOWER(concept_name) LIKE '%coordination%'
-  OR LOWER(concept_name) LIKE '%gait%'
-  OR LOWER(concept_name) LIKE '%training%'
-  OR LOWER(concept_name) LIKE '%hand%'
-  OR LOWER(concept_name) LIKE '%sensory%'
-  OR LOWER(concept_name) LIKE '%vestibular%'
-  OR LOWER(concept_name) LIKE '%strengthening%'
-  OR LOWER(concept_name) LIKE '%stretching%'
-  OR LOWER(concept_name) LIKE '%aphasia%'
-  OR LOWER(concept_name) LIKE '%stroke%'
-  OR LOWER(concept_name) LIKE '%mobility%'
-  OR LOWER(concept_name) LIKE '%assistive devices%'
-  OR LOWER(concept_name) LIKE '%adaptive equipment%'
-  AND procedure_type NOT IN ('Diagnosis')
+FROM work_sonar_o213.haemorrhagic_procedure_classification
+WHERE (
+      LOWER(concept_name) LIKE '%therapy%'
+   OR LOWER(concept_name) LIKE '%speech%'
+   OR LOWER(concept_name) LIKE '%exercise%'
+   OR LOWER(concept_name) LIKE '%skill%'
+   OR LOWER(concept_name) LIKE '%physical%'
+   OR LOWER(concept_name) LIKE '%occupational%'
+   OR LOWER(concept_name) LIKE '%rehabilitation%'
+   OR LOWER(concept_name) LIKE '%recovery%'
+   OR LOWER(concept_name) LIKE '%motor%'
+   OR LOWER(concept_name) LIKE '%neuroplasticity%'
+   OR LOWER(concept_name) LIKE '%cognitive%'
+   OR LOWER(concept_name) LIKE '%movement%'
+   OR LOWER(concept_name) LIKE '%functional%'
+   OR LOWER(concept_name) LIKE '%balance%'
+   OR LOWER(concept_name) LIKE '%coordination%'
+   OR LOWER(concept_name) LIKE '%gait%'
+   OR LOWER(concept_name) LIKE '%training%'
+   OR LOWER(concept_name) LIKE '%hand%'
+   OR LOWER(concept_name) LIKE '%sensory%'
+   OR LOWER(concept_name) LIKE '%vestibular%'
+   OR LOWER(concept_name) LIKE '%strengthening%'
+   OR LOWER(concept_name) LIKE '%stretching%'
+   OR LOWER(concept_name) LIKE '%aphasia%'
+   OR LOWER(concept_name) LIKE '%stroke%'
+   OR LOWER(concept_name) LIKE '%mobility%'
+   OR LOWER(concept_name) LIKE '%assistive devices%'
+   OR LOWER(concept_name) LIKE '%adaptive equipment%'
+)
+AND procedure_type NOT IN ('Diagnosis')
+AND LOWER(concept_name) NOT LIKE '%chemo%'
+AND LOWER(concept_name) NOT LIKE '%inpatient%'
+AND LOWER(concept_name) NOT LIKE '%x-ray%'
+AND LOWER(concept_name) NOT LIKE '%dialysis%'
+AND LOWER(concept_name) NOT LIKE '%initial%'
+AND LOWER(concept_name) NOT LIKE '%visit%'
+AND LOWER(concept_name) NOT LIKE '%examination%'
+AND LOWER(concept_name) NOT LIKE '%test%'
 ORDER BY procedure_count DESC;
+
 """
 
 QUERY_CREATE_ISCHEMIC_PROCEDURE_REHAB = """
-CREATE TABLE schema_name.ischemic_procedure_rehab AS
+CREATE TABLE work_sonar_o213.ischemic_procedure_rehab AS
 SELECT *
-FROM schema_name.ischemic_procedure_classification
-WHERE LOWER(concept_name) LIKE '%therapy%'
-  OR LOWER(concept_name) LIKE '%speech%'
-  OR LOWER(concept_name) LIKE '%exercise%'
-  OR LOWER(concept_name) LIKE '%skill%'
-  OR LOWER(concept_name) LIKE '%physical%'
-  OR LOWER(concept_name) LIKE '%occupational%'
-  OR LOWER(concept_name) LIKE '%rehabilitation%'
-  OR LOWER(concept_name) LIKE '%recovery%'
-  OR LOWER(concept_name) LIKE '%motor%'
-  OR LOWER(concept_name) LIKE '%neuroplasticity%'
-  OR LOWER(concept_name) LIKE '%cognitive%'
-  OR LOWER(concept_name) LIKE '%movement%'
-  OR LOWER(concept_name) LIKE '%functional%'
-  OR LOWER(concept_name) LIKE '%balance%'
-  OR LOWER(concept_name) LIKE '%coordination%'
-  OR LOWER(concept_name) LIKE '%gait%'
-  OR LOWER(concept_name) LIKE '%training%'
-  OR LOWER(concept_name) LIKE '%hand%'
-  OR LOWER(concept_name) LIKE '%sensory%'
-  OR LOWER(concept_name) LIKE '%vestibular%'
-  OR LOWER(concept_name) LIKE '%strengthening%'
-  OR LOWER(concept_name) LIKE '%stretching%'
-  OR LOWER(concept_name) LIKE '%aphasia%'
-  OR LOWER(concept_name) LIKE '%stroke%'
-  OR LOWER(concept_name) LIKE '%mobility%'
-  OR LOWER(concept_name) LIKE '%assistive devices%'
-  OR LOWER(concept_name) LIKE '%adaptive equipment%'
-  AND procedure_type NOT IN ('Diagnosis')
+FROM work_sonar_o213.ischemic_procedure_classification
+WHERE (
+      LOWER(concept_name) LIKE '%therapy%'
+   OR LOWER(concept_name) LIKE '%speech%'
+   OR LOWER(concept_name) LIKE '%exercise%'
+   OR LOWER(concept_name) LIKE '%skill%'
+   OR LOWER(concept_name) LIKE '%physical%'
+   OR LOWER(concept_name) LIKE '%occupational%'
+   OR LOWER(concept_name) LIKE '%rehabilitation%'
+   OR LOWER(concept_name) LIKE '%recovery%'
+   OR LOWER(concept_name) LIKE '%motor%'
+   OR LOWER(concept_name) LIKE '%neuroplasticity%'
+   OR LOWER(concept_name) LIKE '%cognitive%'
+   OR LOWER(concept_name) LIKE '%movement%'
+   OR LOWER(concept_name) LIKE '%functional%'
+   OR LOWER(concept_name) LIKE '%balance%'
+   OR LOWER(concept_name) LIKE '%coordination%'
+   OR LOWER(concept_name) LIKE '%gait%'
+   OR LOWER(concept_name) LIKE '%training%'
+   OR LOWER(concept_name) LIKE '%hand%'
+   OR LOWER(concept_name) LIKE '%sensory%'
+   OR LOWER(concept_name) LIKE '%vestibular%'
+   OR LOWER(concept_name) LIKE '%strengthening%'
+   OR LOWER(concept_name) LIKE '%stretching%'
+   OR LOWER(concept_name) LIKE '%aphasia%'
+   OR LOWER(concept_name) LIKE '%stroke%'
+   OR LOWER(concept_name) LIKE '%mobility%'
+   OR LOWER(concept_name) LIKE '%assistive devices%'
+   OR LOWER(concept_name) LIKE '%adaptive equipment%'
+)
+AND procedure_type NOT IN ('Diagnosis')
+AND LOWER(concept_name) NOT LIKE '%chemo%'
+AND LOWER(concept_name) NOT LIKE '%inpatient%'
+AND LOWER(concept_name) NOT LIKE '%x-ray%'
+AND LOWER(concept_name) NOT LIKE '%dialysis%'
+AND LOWER(concept_name) NOT LIKE '%initial%'
+AND LOWER(concept_name) NOT LIKE '%visit%'
+AND LOWER(concept_name) NOT LIKE '%examination%'
+AND LOWER(concept_name) NOT LIKE '%test%'
 ORDER BY procedure_count DESC;
+
 """
 
 QUERY_CREATE_HEMMORHAGIC_BUCKET_PROCEDURES = """
