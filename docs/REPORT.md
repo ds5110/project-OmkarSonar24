@@ -45,6 +45,7 @@ We focused on patients with the following concept IDs:
 | Haemorrhagic Stroke | 432923     | Subarachnoid hemorrage      | 21454007           | SNOMED     | NO       | YES         |
 | Haemorrhagic Stroke | 35609033   | Haemorrhagic stroke         | 1078001000000100   | SNOMED     | NO       | YES         |
 | Haemorrhagic Stroke | 4319328    | Brain stem hemorrhage       | 95454007           | SNOMED     | NO       | YES         |
+|Brain Stem Stroke	  |4201421	   |Brain stem vertigo	         |51568001	          |SNOMED	   |YES	      |YES          |
 
 After discussions with our stakeholder, Rob, we decided to exclude patients with cryptogenic stroke and brain stem stroke from the analysis. With the finalized concept IDs in hand, we included all their descendant concepts for a broader and more comprehensive dataset.
 
@@ -71,12 +72,12 @@ After completing the data filtration process, we created two distinct cohorts ba
 - Both ischemic and hemorrhagic strokes
 
 This methodology allowed us to focus on the most relevant data and ensure that each cohort was well-defined and distinct.
-
+In this analysis, we have focused exclusively on the first two cohorts, with the third cohort remaining to be explored in future work.
 # Key Findings
 
 Stroke care transitions are a critical area for improving patient outcomes, yet gaps in data and understanding make it challenging to optimize care. By refining the original project scope to focus on specific pathways and treatment types, this analysis provides insights that can inform rehabilitation protocols.
 
-## Demographics
+## 1. Demographics
 ![age_distribution_by_stroke_type](../figs/age_distribution_by_stroke_type.png)
 There is a direct relationship between age and stroke risk; as people age, they become more susceptible to experiencing strokes.
 
@@ -100,7 +101,7 @@ Females tend to be 4-5 years older than males at the time of their first stroke 
 
 Due to their older age at first stroke, females experience a higher mortality rate, leading to an overall higher death rate from strokes compared to males - can be verified if mortality data is available in the future.​
 
-## Study of Stroke Treatment Procedures
+## 2. Study of Stroke Treatment Procedures
 
 ![stroke_procedures_plot_with_percentage_and_count](../figs/stroke_procedures_plot_with_percentage_and_count.jpg)
 
@@ -112,7 +113,7 @@ An analysis of the procedures used for different stroke types reveals that nine 
 
 To further explore the data, we categorized the various treatment methods into groups, including physical therapy, occupational therapy, speech and language therapy, mental health and psychotherapy, surgical procedures, and other therapies. Despite the differences in stroke types, the distribution of these procedures remains quite similar across the board, reinforcing the critical role of physical therapy in stroke rehabilitation. However, one notable difference is the use of surgical procedures: only 0.03% of ischemic stroke cases involve surgery, compared to 1.40% of hemorrhagic stroke cases.
 
-## Patient Discharge Duration
+## 3. Patient Discharge Duration
 ![ischemic_vs_haemorrhagic_discharge_duration_kde](../figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png)
 
 Hemorrhagic strokes are generally more dangerous than ischemic strokes, which often results in longer patient care duration.​
