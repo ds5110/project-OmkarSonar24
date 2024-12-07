@@ -79,8 +79,15 @@ We also identified patterns of care for stroke subtypes, such as Ischemic and He
 
 Stroke care transitions are a critical area for improving patient outcomes, yet gaps in data and understanding make it challenging to optimize care. By refining the original project scope to focus on specific pathways and treatment types, this analysis provides insights that can inform rehabilitation protocols.
 
-![age_distribution_by_stroke_type](figs/age_distribution_by_stroke_type.png)
+![age_distribution_by_stroke_type](../figs/age_distribution_by_stroke_type.png)
 There is a direct relationship between age and stroke risk; as people age, they become more susceptible to experiencing strokes.
+
+![age_distribution_by_stroke_type](../figs/age_group_ratio_table.png)
+About 81% of all strokes are classified as ischemic strokes, making them the most common type.​
+
+Around 73% of all strokes occur in individuals aged 65 and older, emphasizing the heightened stroke risk in older populations.​
+
+It is possible for an individual to experience both ischemic and hemorrhagic strokes, but ischemic strokes are more likely to convert into hemorrhagic strokes than vice-versa.​
 
 ## Challenges and Lessons Learned
 1. Data Limitations:
