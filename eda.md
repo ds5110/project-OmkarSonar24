@@ -15,7 +15,7 @@ AND c.concept_name NOT LIKE '%sun stroke%'
 GROUP BY c.concept_name 
 ORDER BY count DESC;
 ```
-![Figure 1](figs\counts_of_different_types_of_strokes.png)
+![Figure 1](figs/counts_of_different_types_of_strokes.png)
 
 ```sql
 SELECT c.concept_name as stroke_type, COUNT (*) as count 
@@ -26,16 +26,7 @@ GROUP BY c.concept_name
 ORDER BY count DESC;
 ```
 
-![Figure 1](figs\counts_of_different_types_of_strokes_plot_2.png)
-
-
-```sql
-SELECT vo.person_id, vo.visit_occurrence_id, c.concept_id, c.concept_name 
-FROM work_dhande_ak210.visit_detail vo 
-JOIN omop_cdm_53_pmtx_202203.concept c on vo.visit_detail_concept_id =c.concept_id order by vo.visit_occurrence_id ;
-```
-
-![Figure 1](figs\INITIAL_EDA_IMAGES\fig3.jpg)
+![Figure 1](figs/counts_of_different_types_of_strokes_plot_2.png)
 
 
 ## Story & Observation - 
@@ -56,19 +47,9 @@ JOIN omop_cdm_53_pmtx_202203.concept c on vo.visit_detail_concept_id =c.concept_
 3. The details of the procedures that stroke patients undergo as a part of post-diagnosis treatment/therapy will be provided by the stakeholder to further help narrow down, or dataset into smaller and more focussed cohorts for analysis. Following this we will be able to include the procedures as a part of our analysis.
 
 ## Steps to reproduce the above plots -
-
-1. Figure 1 - 
-    ```
-    make fig1
-    ```
-2. Figure 2 - 
-    ```
-    make fig2
-    ```
-3. Figure 3 - 
-    ```
-    make fig3
-    ```
+```
+make eda
+```
 
 
 
