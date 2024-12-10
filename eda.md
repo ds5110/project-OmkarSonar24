@@ -34,7 +34,7 @@ ORDER BY count DESC;
 
 2. Realising a shortcoming of our approach from Figure 1, that Heat Strokes will get considered as a part of our cohort as well, we changed our approach to define a patient cohort who have been diagnosed with stroke, by referring the following concept IDs only -
 
-![Figure 1](assets\stroke_concept_ids.jpg)
+![Figure 1](assets/stroke_concept_ids.jpg)
 
 3. Creating a cohort of the patients above we proceeded with creating further plots, and as observed **Cerebral Infarction** is the most common stroke that arises out of all the 7 types considered.
 
