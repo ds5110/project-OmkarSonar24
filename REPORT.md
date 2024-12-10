@@ -17,12 +17,12 @@ Every 40 seconds, someone in the United States suffers a stroke, with 800,000 ne
 This project explores the treatment pathways of stroke survivors using the IQVIA Pharmetrics+ dataset—a large commercial health insurance claims database. The focus is on analyzing the types of care provided to patients following a stroke, with particular attention to ischemic and hemorrhagic stroke types.
 
 ## Common Data Model
-![OMOP_CDM](../assets/omop_cdm.png)
+![OMOP_CDM](/assets/omop_cdm.png)
 
 The OMOP Common Data Model (CDM) provides a standardized structure for organizing and analyzing healthcare data. This standardized approach enables researchers to analyze data across different healthcare systems and databases, even when the data originates from diverse sources or regions with differing formats.
 
 ## ERD of the Common Data Model 
-![Figure 1](../assets/erd.jpg)
+![Figure 1](/assets/erd.jpg)
 
 The OMOP CDM is composed of several core tables that store data, including:
 
@@ -36,7 +36,7 @@ The OMOP CDM is composed of several core tables that store data, including:
 These tables are linked by standardized identifiers, ensuring consistency across datasets and allowing for effective analysis.
 
 ## Creating a Cohort
-![Cohort Creation Method](../assets/Method_Flowchart.jpg)
+![Cohort Creation Method](/assets/Method_Flowchart.jpg)
 
 Our cohort creation process began with Casey's cohort, which was then refined to create specific cohorts for our project goal.
 
@@ -91,24 +91,24 @@ In this analysis, we have focused exclusively on the first two cohorts, with the
 Stroke care transitions are a critical area for improving patient outcomes, yet gaps in data and understanding make it challenging to optimize care. By refining the original project scope to focus on specific pathways and treatment types, this analysis provides insights that can inform rehabilitation protocols.
 
 ## 1. Demographics
-![age_distribution_by_stroke_type](../figs/age_distribution_by_stroke_type.png)
+![age_distribution_by_stroke_type](/figs/age_distribution_by_stroke_type.png)
 There is a direct relationship between age and stroke risk; as people age, they become more susceptible to experiencing strokes.
 
-![stroke_type_distribution_table](../figs/stroke_type_distribution_table.png)
+![stroke_type_distribution_table](/figs/stroke_type_distribution_table.png)
 About 81% of all strokes are classified as ischemic strokes, making them the most common type
 
-![age_group_ratio_table](../figs/age_group_ratio_table.png)
+![age_group_ratio_table](/figs/age_group_ratio_table.png)
 Around 77% of all strokes occur in individuals aged 65 and older, emphasizing the heightened stroke risk in older populations.​
 
 It is possible for an individual to experience both ischemic and hemorrhagic strokes, but ischemic strokes are more likely to convert into hemorrhagic strokes than vice-versa.​
 
-![gender_distribution_by_stroke_type](../figs/gender_distribution_by_stroke_type.png)
+![gender_distribution_by_stroke_type](/figs/gender_distribution_by_stroke_type.png)
 
 The total count of ischemic strokes is higher in females compared to males, which contradicts existing research that suggests males typically have a higher incidence of ischemic strokes.​
 
 Males have a slightly higher incidence of hemorrhagic strokes compared to females, although the difference is minimal.​
 
-![age_distribution_by_gender_and_stroke_type](../figs/age_distribution_by_gender_and_stroke_type.png)
+![age_distribution_by_gender_and_stroke_type](/figs/age_distribution_by_gender_and_stroke_type.png)
 
 Females tend to be 4-5 years older than males at the time of their first stroke occurrence, a trend consistent for both ischemic and hemorrhagic strokes.​
 
@@ -116,18 +116,18 @@ Due to their older age at first stroke, females experience a higher mortality ra
 
 ## 2. Study of Stroke Treatment Procedures
 
-![stroke_procedures_plot_with_percentage_and_count](../figs/stroke_procedures_plot_with_percentage_and_count.jpg)
+![stroke_procedures_plot_with_percentage_and_count](/figs/stroke_procedures_plot_with_percentage_and_count.jpg)
 
 An analysis of the procedures used for different stroke types reveals that nine out of the top 10 most common procedures are shared between both ischemic and hemorrhagic stroke care. Physical exercises play a pivotal role in stroke rehabilitation, alongside other significant treatments such as respiratory therapy and speech therapy.
 
-![procedures_distribution_haemorrhagic_stroke_pie_chart](../figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png)
+![procedures_distribution_haemorrhagic_stroke_pie_chart](/figs/procedures_distribution_haemorrhagic_stroke_pie_chart.png)
 
-![procedures_distribution_ischemic_stroke_pie_chart](../figs/procedures_distribution_ischemic_stroke_pie_chart.png)
+![procedures_distribution_ischemic_stroke_pie_chart](/figs/procedures_distribution_ischemic_stroke_pie_chart.png)
 
 To further explore the data, we categorized the various treatment methods into groups, including physical therapy, occupational therapy, speech and language therapy, mental health and psychotherapy, surgical procedures, and other therapies. Despite the differences in stroke types, the distribution of these procedures remains quite similar across the board, reinforcing the critical role of physical therapy in stroke rehabilitation. However, one notable difference is the use of surgical procedures: only 0.03% of ischemic stroke cases involve surgery, compared to 1.40% of hemorrhagic stroke cases.
 
 ## 3. Patient Discharge Duration
-![ischemic_vs_haemorrhagic_discharge_duration_kde](../figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png)
+![ischemic_vs_haemorrhagic_discharge_duration_kde](/figs/ischemic_vs_haemorrhagic_discharge_duration_kde.png)
 
 Hemorrhagic strokes are generally more dangerous than ischemic strokes, which often results in longer patient care duration.​
 
